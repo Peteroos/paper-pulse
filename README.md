@@ -6,6 +6,12 @@
 - 3D 重建
 - 世界模型
 
+公开网址部署成功后会在这里：
+
+```text
+https://peteroos.github.io/paper-pulse/
+```
+
 ## 运行
 
 ```bash
@@ -32,24 +38,7 @@ http://localhost:4173
 
 ## 数据来源
 
-服务端通过 arXiv API 拉取 Atom 结果，按提交时间倒序获取每个方向的最新论文，并缓存当天结果。点击页面右上角刷新会强制重新抓取。
-
-## 公开访问
-
-开发时可以用本机公网隧道临时分享：
-
-```bash
-npx localtunnel --port 4173
-```
-
-长期公开部署可以使用 Render：
-
-1. 把 `outputs/paper-pulse` 推到一个 GitHub 仓库。
-2. 在 Render 新建 Blueprint 或 Web Service。
-3. 使用本目录里的 `render.yaml`，或手动设置：
-   - Build Command: `npm install`
-   - Start Command: `npm start`
-   - Environment: Node
+服务端通过 arXiv API 拉取 Atom 结果，按提交时间倒序获取每个方向的最新论文，并缓存当天结果。页面优先读取 `public/data/papers.json`，本地开发时也可以通过 `/api/papers` 实时刷新。
 
 ## 后续可扩展
 
