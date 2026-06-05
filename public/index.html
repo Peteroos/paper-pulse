@@ -14,7 +14,35 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <div class="app-shell">
+    <section id="accessGate" class="access-gate" aria-labelledby="accessTitle">
+      <div class="access-panel">
+        <div class="brand-row">
+          <div class="brand-mark">P</div>
+          <div>
+            <p class="brand-kicker">Daily Research</p>
+            <h1 id="accessTitle">Paper Pulse</h1>
+          </div>
+        </div>
+        <form id="accessForm" class="access-form">
+          <label class="field-label" for="accessCode">访问码</label>
+          <input
+            id="accessCode"
+            class="access-input"
+            type="password"
+            autocomplete="off"
+            placeholder="输入访问码"
+            required
+          />
+          <button class="primary-button" type="submit">
+            <i data-lucide="lock-keyhole-open"></i>
+            <span>进入网站</span>
+          </button>
+          <p id="accessError" class="access-error" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+
+    <div id="appShell" class="app-shell locked-content" aria-hidden="true">
       <aside class="sidebar">
         <div class="brand-row">
           <div class="brand-mark">P</div>

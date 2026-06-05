@@ -1,5 +1,5 @@
 {
-  "fetchedAt": 1780694722995,
+  "fetchedAt": 1780696577445,
   "papers": [
     {
       "id": "http://arxiv.org/abs/2606.04705v1",
@@ -331,8 +331,8 @@
       "categories": [
         "cs.CV"
       ],
-      "score": 15,
-      "hotScore": 85
+      "score": 14,
+      "hotScore": 82
     },
     {
       "id": "http://arxiv.org/abs/2606.05113v1",
@@ -1672,33 +1672,6 @@
       "hotScore": 83
     },
     {
-      "id": "http://arxiv.org/abs/2606.04249v1",
-      "arxivId": "2606.04249v1",
-      "title": "Prospective Dynamic 3D MRI Reconstruction via Latent-Space Motion Tracking from Single Measurement",
-      "authors": [
-        "Lixuan Chen",
-        "Zhongnan Liu",
-        "Jesse Hamilton",
-        "James M. Balter",
-        "Jeong Joon Park",
-        "Liyue Shen"
-      ],
-      "summary": "Prospective reconstruction is crucial in many clinical applications such as MRI-guided radiotherapy, which demands accurate image reconstruction and fast motion estimation from currently acquired measurements. However, prospective reconstruction remains challenging due to ultra-sparse sampling and stringent latency requirements. In this work, we propose PDMR, a Prospective Dynamic 3D MRI Reconstruction framework with latent-space motion tracking. Our core idea is to learn an efficient and generalizable latent manifold of motion fields offline, enabling rapid online adaptation for prospective reconstruction. Specifically, we parameterize the deformation vector fields (DVFs) on a low-dimensional manifold, effectively reducing the search space for fast online adaptation, and employ a tri-plane representation to achieve geometry-aware and memory-efficient encoding of 3D motion. Experiments on both XCAT digital phantoms and in-house abdominal MRI datasets demonstrate that PDMR achieves high-fidelity and temporally consistent reconstruction across multiple prospective scenarios (Immediate and After-2min), outperforming state-of-the-art retrospective and online methods. Our results suggest a promising pathway toward ultra-fast, motion-aware prospective MRI reconstruction in clinical practice.",
-      "published": "2026-06-02T21:54:33Z",
-      "updated": "2026-06-02T21:54:33Z",
-      "abstractUrl": "http://arxiv.org/abs/2606.04249v1",
-      "pdfUrl": "https://arxiv.org/pdf/2606.04249v1",
-      "topicId": "medical-imaging",
-      "topicName": "AI 医学影像",
-      "topicColor": "#cf3f58",
-      "categories": [
-        "cs.CV",
-        "eess.IV"
-      ],
-      "score": 11,
-      "hotScore": 97
-    },
-    {
       "id": "http://arxiv.org/abs/2606.01293v1",
       "arxivId": "2606.01293v1",
       "title": "ResNet-34 with Lightweight Decoder for Accurate and Efficient Segmentation of Fetal Brain MRI",
@@ -1747,6 +1720,33 @@
       ],
       "score": 11,
       "hotScore": 79
+    },
+    {
+      "id": "http://arxiv.org/abs/2606.04249v1",
+      "arxivId": "2606.04249v1",
+      "title": "Prospective Dynamic 3D MRI Reconstruction via Latent-Space Motion Tracking from Single Measurement",
+      "authors": [
+        "Lixuan Chen",
+        "Zhongnan Liu",
+        "Jesse Hamilton",
+        "James M. Balter",
+        "Jeong Joon Park",
+        "Liyue Shen"
+      ],
+      "summary": "Prospective reconstruction is crucial in many clinical applications such as MRI-guided radiotherapy, which demands accurate image reconstruction and fast motion estimation from currently acquired measurements. However, prospective reconstruction remains challenging due to ultra-sparse sampling and stringent latency requirements. In this work, we propose PDMR, a Prospective Dynamic 3D MRI Reconstruction framework with latent-space motion tracking. Our core idea is to learn an efficient and generalizable latent manifold of motion fields offline, enabling rapid online adaptation for prospective reconstruction. Specifically, we parameterize the deformation vector fields (DVFs) on a low-dimensional manifold, effectively reducing the search space for fast online adaptation, and employ a tri-plane representation to achieve geometry-aware and memory-efficient encoding of 3D motion. Experiments on both XCAT digital phantoms and in-house abdominal MRI datasets demonstrate that PDMR achieves high-fidelity and temporally consistent reconstruction across multiple prospective scenarios (Immediate and After-2min), outperforming state-of-the-art retrospective and online methods. Our results suggest a promising pathway toward ultra-fast, motion-aware prospective MRI reconstruction in clinical practice.",
+      "published": "2026-06-02T21:54:33Z",
+      "updated": "2026-06-02T21:54:33Z",
+      "abstractUrl": "http://arxiv.org/abs/2606.04249v1",
+      "pdfUrl": "https://arxiv.org/pdf/2606.04249v1",
+      "topicId": "medical-imaging",
+      "topicName": "AI 医学影像",
+      "topicColor": "#cf3f58",
+      "categories": [
+        "cs.CV",
+        "eess.IV"
+      ],
+      "score": 10,
+      "hotScore": 94
     },
     {
       "id": "http://arxiv.org/abs/2606.04184v1",
@@ -3646,33 +3646,6 @@
       "hotScore": 99
     },
     {
-      "id": "http://arxiv.org/abs/2606.01458v1",
-      "arxivId": "2606.01458v1",
-      "title": "LEGS: Fine-Tuning Teleop-Free VLAs for Humanoid Loco-manipulation in an Embodied Gaussian Splatting World",
-      "authors": [
-        "Hojune Kim",
-        "Timothy Chen",
-        "Jiankai Sun",
-        "Lars W. Osterberg",
-        "Qianzhong Chen",
-        "Ke Wang",
-        "Mac Schwager"
-      ],
-      "summary": "Training vision-language-action (VLA) policies for humanoid loco-manipulation is constrained by the high cost and complexity of collecting human teleoperation demonstrations. VLA policies fine-tuned in simulators have, until now, failed to transfer effectively in humanoid loco-manipulation tasks. We present LEGS (Loco-manipulation via Embodied Gaussian Splatting), a hybrid simulator that composites a mesh foreground (robot, objects, props) over a photorealistic 3D Gaussian Splatting (3DGS) background reconstructed from a handheld scene capture. LEGS uses a procedural motion-primitive generator to synthesize labeled demonstrations at scale without human teleoperation, and a deterministic two-stage color calibration to align the rendered 3DGS image to the robot's deployment camera. On a Unitree G1 humanoid robot, across three pick-and-place tasks of increasing whole-body difficulty and three VLA backbones (psi_0, pi_0.5, GR00T N1.6), a policy trained purely on LEGS data matches or exceeds one trained on human teleoperation demos on every experiment. It also outperforms a mesh-only simulation baseline that ablates the effect of the 3DGS background, showing that photorealistic rendering is a key enabler for synthetic data transfer. Humanoid motion is recorded independently of scene appearance in LEGS, allowing the same auto-generated demonstrations to be re-rendered under new backgrounds and object meshes--covering a new scene at more than 15x lower cost than teleoperation--to augment training data for robustness to scene variations. Under combined object-and-scene appearance shift, the policy trained on re-rendered LEGS-AUG data maintains task success while the baseline trained on teleoperation data fails entirely. Our project page is located at https://legsvla.github.io/.",
-      "published": "2026-05-31T21:36:02Z",
-      "updated": "2026-05-31T21:36:02Z",
-      "abstractUrl": "http://arxiv.org/abs/2606.01458v1",
-      "pdfUrl": "https://arxiv.org/pdf/2606.01458v1",
-      "topicId": "3d-reconstruction",
-      "topicName": "3D 重建",
-      "topicColor": "#0f8b8d",
-      "categories": [
-        "cs.RO"
-      ],
-      "score": 9,
-      "hotScore": 76
-    },
-    {
       "id": "http://arxiv.org/abs/2605.31419v1",
       "arxivId": "2605.31419v1",
       "title": "Triangle Splatting SLAM",
@@ -4379,33 +4352,31 @@
       "hotScore": 74
     },
     {
-      "id": "http://arxiv.org/abs/2606.04236v1",
-      "arxivId": "2606.04236v1",
-      "title": "Supportive Token Revealing for Fast Diffusion Language Model Decoding",
+      "id": "http://arxiv.org/abs/2606.01458v1",
+      "arxivId": "2606.01458v1",
+      "title": "LEGS: Fine-Tuning Teleop-Free VLAs for Humanoid Loco-manipulation in an Embodied Gaussian Splatting World",
       "authors": [
-        "Giries Abu Ayoub",
-        "Mario Barbara",
-        "Lluís Pastor-Pérez",
-        "Tanja Bien",
-        "Aneesh Barthakur",
-        "Alaa Maalouf",
-        "Loay Mualem"
+        "Hojune Kim",
+        "Timothy Chen",
+        "Jiankai Sun",
+        "Lars W. Osterberg",
+        "Qianzhong Chen",
+        "Ke Wang",
+        "Mac Schwager"
       ],
-      "summary": "Discrete diffusion language models can generate text efficiently by updating multiple masked positions in parallel, but this parallelism introduces a quality-latency trade-off. Aggressive decoding may commit mutually dependent tokens too early, while conservative decoding requires many denoising steps. Existing methods address this tension by deciding which tokens are safe to reveal using confidence or dependency criteria. However, avoiding unsafe commits does not necessarily make the remaining masked sequence easy to decode, since uncertain tokens may depend on masked tokens, creating a bottleneck for denoising steps. We propose AXON, a training-free module that can be added on top of existing parallel decoding strategies for diffusion language models. Rather than replacing the base decoder, AXON monitors the remaining uncertain masked tokens and intervenes only when their current state suggests that additional context is needed. It then shifts the criterion from which tokens are safest to reveal to which confident reveals would best support later denoising. AXON selects anchors, confident masked tokens that uncertain positions attend to, using attention, uncertainty, and confidence signals. Experiments on reasoning and code-generation benchmarks across multiple diffusion language models show that AXON improves the quality-latency trade-off of existing parallel decoders, often reducing the number of function evaluations while maintaining or improving accuracy.",
-      "published": "2026-06-02T21:35:54Z",
-      "updated": "2026-06-02T21:35:54Z",
-      "abstractUrl": "http://arxiv.org/abs/2606.04236v1",
-      "pdfUrl": "https://arxiv.org/pdf/2606.04236v1",
-      "topicId": "speculative-decoding",
-      "topicName": "投机解码",
-      "topicColor": "#b45f06",
+      "summary": "Training vision-language-action (VLA) policies for humanoid loco-manipulation is constrained by the high cost and complexity of collecting human teleoperation demonstrations. VLA policies fine-tuned in simulators have, until now, failed to transfer effectively in humanoid loco-manipulation tasks. We present LEGS (Loco-manipulation via Embodied Gaussian Splatting), a hybrid simulator that composites a mesh foreground (robot, objects, props) over a photorealistic 3D Gaussian Splatting (3DGS) background reconstructed from a handheld scene capture. LEGS uses a procedural motion-primitive generator to synthesize labeled demonstrations at scale without human teleoperation, and a deterministic two-stage color calibration to align the rendered 3DGS image to the robot's deployment camera. On a Unitree G1 humanoid robot, across three pick-and-place tasks of increasing whole-body difficulty and three VLA backbones (psi_0, pi_0.5, GR00T N1.6), a policy trained purely on LEGS data matches or exceeds one trained on human teleoperation demos on every experiment. It also outperforms a mesh-only simulation baseline that ablates the effect of the 3DGS background, showing that photorealistic rendering is a key enabler for synthetic data transfer. Humanoid motion is recorded independently of scene appearance in LEGS, allowing the same auto-generated demonstrations to be re-rendered under new backgrounds and object meshes--covering a new scene at more than 15x lower cost than teleoperation--to augment training data for robustness to scene variations. Under combined object-and-scene appearance shift, the policy trained on re-rendered LEGS-AUG data maintains task success while the baseline trained on teleoperation data fails entirely. Our project page is located at https://legsvla.github.io/.",
+      "published": "2026-05-31T21:36:02Z",
+      "updated": "2026-05-31T21:36:02Z",
+      "abstractUrl": "http://arxiv.org/abs/2606.01458v1",
+      "pdfUrl": "https://arxiv.org/pdf/2606.01458v1",
+      "topicId": "3d-reconstruction",
+      "topicName": "3D 重建",
+      "topicColor": "#0f8b8d",
       "categories": [
-        "cs.CL",
-        "cs.AI",
-        "cs.LG"
+        "cs.RO"
       ],
       "score": 8,
-      "hotScore": 87
+      "hotScore": 73
     },
     {
       "id": "http://arxiv.org/abs/2606.01379v1",
@@ -4452,6 +4423,35 @@
       ],
       "score": 8,
       "hotScore": 86
+    },
+    {
+      "id": "http://arxiv.org/abs/2606.04236v1",
+      "arxivId": "2606.04236v1",
+      "title": "Supportive Token Revealing for Fast Diffusion Language Model Decoding",
+      "authors": [
+        "Giries Abu Ayoub",
+        "Mario Barbara",
+        "Lluís Pastor-Pérez",
+        "Tanja Bien",
+        "Aneesh Barthakur",
+        "Alaa Maalouf",
+        "Loay Mualem"
+      ],
+      "summary": "Discrete diffusion language models can generate text efficiently by updating multiple masked positions in parallel, but this parallelism introduces a quality-latency trade-off. Aggressive decoding may commit mutually dependent tokens too early, while conservative decoding requires many denoising steps. Existing methods address this tension by deciding which tokens are safe to reveal using confidence or dependency criteria. However, avoiding unsafe commits does not necessarily make the remaining masked sequence easy to decode, since uncertain tokens may depend on masked tokens, creating a bottleneck for denoising steps. We propose AXON, a training-free module that can be added on top of existing parallel decoding strategies for diffusion language models. Rather than replacing the base decoder, AXON monitors the remaining uncertain masked tokens and intervenes only when their current state suggests that additional context is needed. It then shifts the criterion from which tokens are safest to reveal to which confident reveals would best support later denoising. AXON selects anchors, confident masked tokens that uncertain positions attend to, using attention, uncertainty, and confidence signals. Experiments on reasoning and code-generation benchmarks across multiple diffusion language models show that AXON improves the quality-latency trade-off of existing parallel decoders, often reducing the number of function evaluations while maintaining or improving accuracy.",
+      "published": "2026-06-02T21:35:54Z",
+      "updated": "2026-06-02T21:35:54Z",
+      "abstractUrl": "http://arxiv.org/abs/2606.04236v1",
+      "pdfUrl": "https://arxiv.org/pdf/2606.04236v1",
+      "topicId": "speculative-decoding",
+      "topicName": "投机解码",
+      "topicColor": "#b45f06",
+      "categories": [
+        "cs.CL",
+        "cs.AI",
+        "cs.LG"
+      ],
+      "score": 7,
+      "hotScore": 84
     },
     {
       "id": "http://arxiv.org/abs/2606.04174v1",
@@ -6749,8 +6749,8 @@
       "categories": [
         "cs.LG"
       ],
-      "score": 4,
-      "hotScore": 64
+      "score": 3,
+      "hotScore": 61
     },
     {
       "id": "http://arxiv.org/abs/2606.00352v1",
@@ -7621,7 +7621,7 @@
         "cs.PF"
       ],
       "score": 3,
-      "hotScore": 54
+      "hotScore": 52
     },
     {
       "id": "http://arxiv.org/abs/2605.21312v1",
@@ -8309,7 +8309,7 @@
   "aiSummary": {
     "enabled": false,
     "model": "gpt-5-nano",
-    "generatedAt": 1780694722996,
+    "generatedAt": 1780696577446,
     "newSummaries": 0,
     "cachedSummaries": 0
   },

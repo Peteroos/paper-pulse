@@ -1,6 +1,10 @@
+import { isAccessCodeValid } from "./access-code.js";
+
 const state = {
   topics: [],
   papers: [],
+  accessGranted: localStorage.getItem("paperPulse.accessGranted") === "true",
+  appStarted: false,
   activeTopic: localStorage.getItem("paperPulse.activeTopic") || "",
   selectedId: null,
   query: "",
@@ -20,6 +24,11 @@ const state = {
 };
 
 const els = {
+  accessGate: document.querySelector("#accessGate"),
+  accessForm: document.querySelector("#accessForm"),
+  accessCode: document.querySelector("#accessCode"),
+  accessError: document.querySelector("#accessError"),
+  appShell: document.querySelector("#appShell"),
   topicNav: document.querySelector("#topicNav"),
   summaryStrip: document.querySelector("#summaryStrip"),
   paperList: document.querySelector("#paperList"),
@@ -42,6 +51,25 @@ const els = {
 init();
 
 async function init() {
+  bindAccessGate();
+
+  if (!state.accessGranted) {
+    els.accessCode.focus();
+    window.lucide?.createIcons();
+    return;
+  }
+
+  await startApp();
+}
+
+async function startApp() {
+  if (state.appStarted) {
+    return;
+  }
+
+  state.appStarted = true;
+  document.body.classList.add("access-granted");
+  els.appShell.setAttribute("aria-hidden", "false");
   els.dateLine.textContent = new Intl.DateTimeFormat("zh-CN", {
     dateStyle: "full",
   }).format(new Date());
@@ -49,6 +77,24 @@ async function init() {
   bindEvents();
   renderLoading();
   await loadPapers();
+}
+
+function bindAccessGate() {
+  els.accessForm.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    const code = els.accessCode.value.trim();
+
+    if (!isAccessCodeValid(code)) {
+      els.accessError.textContent = "访问码不正确。";
+      els.accessCode.select();
+      return;
+    }
+
+    localStorage.setItem("paperPulse.accessGranted", "true");
+    state.accessGranted = true;
+    els.accessError.textContent = "";
+    await startApp();
+  });
 }
 
 function bindEvents() {

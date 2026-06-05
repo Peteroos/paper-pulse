@@ -38,6 +38,62 @@ button {
   cursor: pointer;
 }
 
+.access-gate {
+  display: grid;
+  min-height: 100vh;
+  place-items: center;
+  padding: 24px;
+}
+
+.access-panel {
+  width: min(420px, 100%);
+  padding: 24px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(255, 253, 248, 0.84);
+  box-shadow: var(--shadow);
+}
+
+.access-form {
+  display: grid;
+  gap: 12px;
+}
+
+.access-input {
+  width: 100%;
+  height: 44px;
+  padding: 0 12px;
+  border: 1px solid var(--line-strong);
+  border-radius: 8px;
+  background: #fff;
+  color: var(--ink);
+  outline: none;
+}
+
+.access-form .primary-button {
+  width: 100%;
+}
+
+.access-error {
+  min-height: 20px;
+  margin: 0;
+  color: #764300;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.app-shell.locked-content {
+  display: none;
+}
+
+body.access-granted .access-gate {
+  display: none;
+}
+
+body.access-granted .app-shell.locked-content {
+  display: grid;
+}
+
 .app-shell {
   display: grid;
   grid-template-columns: 320px minmax(0, 1fr);
