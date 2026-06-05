@@ -44,8 +44,11 @@ GitHub Pages is static and cannot securely call OpenAI by itself. For real-time 
 Vercel setup:
 
 1. Import `Peteroos/paper-pulse` into Vercel.
-2. Add Environment Variable `OPENAI_API_KEY`.
-3. Optionally add `OPENAI_MODEL=gpt-5-nano`.
-4. Deploy.
+2. Set Framework Preset to `Other`, not `Express`.
+3. Set Build Command to `npm run generate`.
+4. Leave Output Directory blank/default.
+5. Add Environment Variable `OPENAI_API_KEY`.
+6. Optionally add `OPENAI_MODEL=gpt-5-nano`.
+7. Deploy.
 
 The browser calls `/api/summarize`; the API key stays in the serverless environment and is never bundled into the static website.

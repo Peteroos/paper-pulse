@@ -49,10 +49,13 @@ http://localhost:4173
 ### Vercel 部署
 
 1. 在 Vercel 导入 `Peteroos/paper-pulse`。
-2. Environment Variables 里添加：
+2. Framework Preset 选择 `Other`，不要选择 `Express`。
+3. Build Command 使用 `npm run generate`。
+4. Output Directory 留空或使用默认配置。
+5. Environment Variables 里添加：
    - `OPENAI_API_KEY`: 你的 OpenAI API key
    - `OPENAI_MODEL`: `gpt-5-nano`
-3. 部署后访问 Vercel 网址，实时总结按钮即可使用。
+6. 部署后访问 Vercel 网址，实时总结按钮即可使用。
 
 如果继续使用 GitHub Pages，又想调用另一个 Vercel API，在 `public/config.js` 里把 `PAPER_PULSE_API_BASE` 指向 Vercel 域名。
 

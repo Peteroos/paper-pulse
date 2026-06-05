@@ -1,6 +1,5 @@
 {
-  "buildCommand": "npm run build",
-  "outputDirectory": "public",
+  "buildCommand": "npm run generate",
   "functions": {
     "api/summarize.js": {
       "maxDuration": 60
