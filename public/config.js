@@ -1,0 +1,1 @@
+window.PAPER_PULSE_API_BASE = window.PAPER_PULSE_API_BASE || "";

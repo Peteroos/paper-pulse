@@ -37,15 +37,15 @@ https://peteroos.github.io/paper-pulse/
 
 The workflow also runs every day at 12:20 UTC to refresh paper data.
 
-## Optional AI summaries
+## Optional on-demand AI summaries
 
-To enable cached AI summaries:
+GitHub Pages is static and cannot securely call OpenAI by itself. For real-time AI summaries, deploy this project to Vercel or another host that supports serverless functions.
 
-1. Open Settings → Secrets and variables → Actions.
-2. Add a repository secret named `OPENAI_API_KEY`.
-3. Paste your OpenAI API key as the secret value.
-4. Run `Update Papers and Deploy Pages` manually once.
+Vercel setup:
 
-The key is only available inside GitHub Actions. It is not bundled into the static website, and users cannot see it from the browser.
+1. Import `Peteroos/paper-pulse` into Vercel.
+2. Add Environment Variable `OPENAI_API_KEY`.
+3. Optionally add `OPENAI_MODEL=gpt-5-nano`.
+4. Deploy.
 
-By default the workflow summarizes at most 12 new papers per run. Add an Actions variable named `AI_SUMMARY_LIMIT` if you want a smaller or larger batch.
+The browser calls `/api/summarize`; the API key stays in the serverless environment and is never bundled into the static website.

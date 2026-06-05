@@ -1,5 +1,7 @@
 import express from "express";
+import { summarizePaper } from "./src/ai-summary.js";
 import { fetchDailyPapers, topics } from "./src/papers.js";
+import { validateSummaryRequest } from "./src/request-validation.js";
 
 const app = express();
 const PORT = Number(process.env.PORT || 4173);
@@ -13,6 +15,7 @@ let cache = {
 };
 
 app.use(express.static("public"));
+app.use(express.json({ limit: "80kb" }));
 
 app.get("/api/topics", (_req, res) => {
   res.json({ topics });
@@ -38,6 +41,23 @@ app.get("/api/papers", async (req, res) => {
     res.status(cache.papers.length ? 200 : 502).json({
       ...cache,
       cached: Boolean(cache.fetchedAt),
+    });
+  }
+});
+
+app.post("/api/summarize", async (req, res) => {
+  const validation = validateSummaryRequest(req.body);
+  if (!validation.ok) {
+    res.status(validation.status).json({ error: validation.error });
+    return;
+  }
+
+  try {
+    const summary = await summarizePaper(validation.paper);
+    res.json({ aiSummary: summary });
+  } catch (error) {
+    res.status(500).json({
+      error: error instanceof Error ? error.message : "Failed to summarize paper",
     });
   }
 });

@@ -33,27 +33,30 @@ http://localhost:4173
 - `npm run generate` 会抓取最新论文并生成 `public/data/papers.json`
 - `.github/workflows/pages.yml` 会每天 12:20 UTC 自动更新并部署
 - 静态站点从 `public/` 发布，不依赖你的电脑长期在线
-- 如果仓库 Secret 里配置了 `OPENAI_API_KEY`，生成脚本会只为新论文补充 AI 中文总结，并复用旧缓存来省钱
-- 默认每次 workflow 最多总结 12 篇新论文，避免首次构建过久；可用 Actions variable `AI_SUMMARY_LIMIT` 调整
+- GitHub Pages 版本只展示论文数据；实时 AI 总结需要一个后端 API，推荐部署到 Vercel
 
 部署到 GitHub 后，在仓库的 Settings → Pages 里选择 GitHub Actions。随后每次 push、手动运行 workflow、或每日定时任务都会更新网站。
 
-## OpenAI API Key
+## 实时 AI 总结
 
-在 GitHub 仓库里添加 Secret：
+为了避免批量烧 token，AI 总结改成用户点击后才生成：
 
-1. 打开 Settings → Secrets and variables → Actions。
-2. 在 Secrets 里点击 New repository secret。
-3. Name 填 `OPENAI_API_KEY`。
-4. Secret 填你的 OpenAI API key。
-5. 保存后手动运行一次 `Update Papers and Deploy Pages` workflow。
+- 前端显示“生成 AI 总结”按钮
+- 用户点击后请求自己的 `/api/summarize`
+- OpenAI key 只放在后端环境变量里
+- 总结结果会缓存在用户浏览器，避免同一用户重复请求同一篇
 
-这个 key 不会进入前端代码，也不会写入 `public/data/papers.json`。GitHub Actions 只在服务器端运行生成脚本时读取它，网站用户只能看到生成好的 AI 总结。
+### Vercel 部署
 
-如果首次运行太慢，可以在 Variables 里添加：
+1. 在 Vercel 导入 `Peteroos/paper-pulse`。
+2. Environment Variables 里添加：
+   - `OPENAI_API_KEY`: 你的 OpenAI API key
+   - `OPENAI_MODEL`: `gpt-5-nano`
+3. 部署后访问 Vercel 网址，实时总结按钮即可使用。
 
-- `AI_SUMMARY_LIMIT=6` 更省钱更快
-- `AI_SUMMARY_LIMIT=20` 更快补齐缓存，但构建更久
+如果继续使用 GitHub Pages，又想调用另一个 Vercel API，在 `public/config.js` 里把 `PAPER_PULSE_API_BASE` 指向 Vercel 域名。
+
+key 不会进入前端代码，也不会写入 `public/data/papers.json`。用户只能看到生成好的 AI 总结，看不到 `OPENAI_API_KEY`。
 
 ## 数据来源
 

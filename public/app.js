@@ -10,6 +10,9 @@ const state = {
   onlyFresh: localStorage.getItem("paperPulse.onlyFresh") === "true",
   deliveryTime: localStorage.getItem("paperPulse.deliveryTime") || "08:30",
   reminderTimer: null,
+  summaryCache: JSON.parse(localStorage.getItem("paperPulse.aiSummaries") || "{}"),
+  summarizing: new Set(),
+  summaryErrors: new Map(),
 };
 
 const els = {
@@ -98,7 +101,10 @@ async function loadPapers(force = false) {
   try {
     const data = await fetchPaperData(force);
     state.topics = data.topics;
-    state.papers = data.papers;
+    state.papers = data.papers.map((paper) => {
+      const cachedSummary = state.summaryCache[paper.arxivId];
+      return cachedSummary && !paper.aiSummary ? { ...paper, aiSummary: cachedSummary } : paper;
+    });
     if (!state.selectedId && state.papers.length) {
       state.selectedId = state.papers[0].id;
     }
@@ -296,6 +302,8 @@ function renderDetail() {
 
   els.detailPane.style.setProperty("--topic-color", paper.topicColor);
   const summary = paper.aiSummary;
+  const isSummarizing = state.summarizing.has(paper.id);
+  const summaryError = state.summaryErrors.get(paper.id);
   els.detailPane.innerHTML = `
     <div class="detail-head">
       <span class="badge detail-topic">${paper.topicName}</span>
@@ -336,6 +344,17 @@ function renderDetail() {
         `
         : `<p class="detail-summary">${escapeHtml(paper.summary)}</p>`
     }
+    ${
+      summary
+        ? ""
+        : `
+          <button class="summary-button" id="summaryButton" type="button" ${isSummarizing ? "disabled" : ""}>
+            <i data-lucide="${isSummarizing ? "loader-circle" : "sparkles"}"></i>
+            <span>${isSummarizing ? "正在生成总结" : "生成 AI 总结"}</span>
+          </button>
+          ${summaryError ? `<p class="summary-error">${escapeHtml(summaryError)}</p>` : ""}
+        `
+    }
     <details class="abstract-details">
       <summary>原始摘要</summary>
       <p class="detail-summary">${escapeHtml(paper.summary)}</p>
@@ -348,6 +367,13 @@ function renderDetail() {
       <a class="detail-link" href="${paper.pdfUrl}" target="_blank" rel="noreferrer">PDF</a>
     </div>
   `;
+
+  const summaryButton = els.detailPane.querySelector("#summaryButton");
+  if (summaryButton) {
+    summaryButton.addEventListener("click", () => {
+      summarizeSelectedPaper(paper);
+    });
+  }
 }
 
 function renderSaved() {
@@ -452,6 +478,75 @@ function toggleSet(set, id) {
 
 function persist(key) {
   localStorage.setItem(`paperPulse.${key}`, JSON.stringify([...state[key]]));
+}
+
+async function summarizeSelectedPaper(paper) {
+  state.summarizing.add(paper.id);
+  state.summaryErrors.delete(paper.id);
+  renderDetail();
+  window.lucide?.createIcons();
+
+  try {
+    const response = await fetch(`${getApiBase()}api/summarize`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        paper: {
+          arxivId: paper.arxivId,
+          title: paper.title,
+          authors: paper.authors,
+          summary: paper.summary,
+          categories: paper.categories,
+          topicName: paper.topicName,
+        },
+      }),
+    });
+
+    if (!response.ok) {
+      const payload = await safeReadJson(response);
+      throw new Error(payload.error || `API returned ${response.status}`);
+    }
+
+    const payload = await response.json();
+    if (!payload.aiSummary) {
+      throw new Error("API 没有返回总结内容");
+    }
+
+    attachSummary(paper, payload.aiSummary);
+  } catch (error) {
+    const message =
+      location.hostname.endsWith("github.io") && !window.PAPER_PULSE_API_BASE
+        ? "GitHub Pages 没有后端 API。请部署到 Vercel 或设置 PAPER_PULSE_API_BASE 后再使用实时总结。"
+        : error.message;
+    state.summaryErrors.set(paper.id, message);
+  } finally {
+    state.summarizing.delete(paper.id);
+    render();
+  }
+}
+
+function attachSummary(paper, aiSummary) {
+  state.summaryCache[paper.arxivId] = aiSummary;
+  localStorage.setItem("paperPulse.aiSummaries", JSON.stringify(state.summaryCache));
+  state.papers = state.papers.map((item) =>
+    item.id === paper.id ? { ...item, aiSummary } : item,
+  );
+}
+
+function getApiBase() {
+  const base = window.PAPER_PULSE_API_BASE || "";
+  if (!base || base.endsWith("/")) return base;
+  return `${base}/`;
+}
+
+async function safeReadJson(response) {
+  try {
+    return await response.json();
+  } catch {
+    return {};
+  }
 }
 
 function scheduleReminder() {

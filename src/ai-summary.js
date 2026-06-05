@@ -1,6 +1,29 @@
-const OPENAI_ENDPOINT = "https://api.openai.com/v1/chat/completions";
+const OPENAI_ENDPOINT = "https://api.openai.com/v1/responses";
 const DEFAULT_MODEL = "gpt-5-nano";
 const DEFAULT_SUMMARY_LIMIT = 12;
+const SUMMARY_SCHEMA = {
+  type: "object",
+  additionalProperties: false,
+  properties: {
+    headline: { type: "string" },
+    bullets: {
+      type: "array",
+      items: { type: "string" },
+      minItems: 3,
+      maxItems: 3,
+    },
+    methods: {
+      type: "array",
+      items: { type: "string" },
+      minItems: 1,
+      maxItems: 4,
+    },
+    why_read: { type: "string" },
+    limitations: { type: "string" },
+    audience: { type: "string" },
+  },
+  required: ["headline", "bullets", "methods", "why_read", "limitations", "audience"],
+};
 
 export async function summarizePapers(papers, { apiKey = process.env.OPENAI_API_KEY } = {}) {
   if (!apiKey) {
@@ -35,7 +58,11 @@ export function getSummaryLimit(value) {
   return Math.floor(parsed);
 }
 
-async function summarizePaper(paper, { apiKey, model }) {
+export async function summarizePaper(paper, { apiKey = process.env.OPENAI_API_KEY, model = process.env.OPENAI_MODEL || DEFAULT_MODEL } = {}) {
+  if (!apiKey) {
+    throw new Error("OPENAI_API_KEY is not configured");
+  }
+
   const response = await fetchWithTimeout(OPENAI_ENDPOINT, {
     method: "POST",
     headers: {
@@ -44,28 +71,28 @@ async function summarizePaper(paper, { apiKey, model }) {
     },
     body: JSON.stringify({
       model,
-      response_format: { type: "json_object" },
-      messages: [
-        {
-          role: "system",
-          content:
-            "你是一个中文科研论文助理。只输出紧凑 JSON，不要 Markdown。总结要准确、克制，不夸大论文贡献。",
+      store: false,
+      instructions:
+        "你是一个中文科研论文助理。总结要准确、克制，不夸大论文贡献。只根据用户给出的题目和摘要总结，不补造实验结果。",
+      input: JSON.stringify({
+        task:
+          "请把这篇论文总结成中文 JSON：headline 一句话结论；bullets 三个贡献点；methods 方法关键词；why_read 为什么值得看；limitations 一个局限或注意点；audience 适合谁读。",
+        paper: {
+          title: paper.title,
+          authors: paper.authors,
+          abstract: paper.summary,
+          categories: paper.categories,
+          topic: paper.topicName,
         },
-        {
-          role: "user",
-          content: JSON.stringify({
-            task:
-              "请把这篇论文总结成中文 JSON：headline 一句话结论；bullets 三个贡献点；methods 三个方法关键词；why_read 为什么值得看；limitations 一个局限或注意点；audience 适合谁读。",
-            paper: {
-              title: paper.title,
-              authors: paper.authors,
-              abstract: paper.summary,
-              categories: paper.categories,
-              topic: paper.topicName,
-            },
-          }),
+      }),
+      text: {
+        format: {
+          type: "json_schema",
+          name: "paper_summary",
+          strict: true,
+          schema: SUMMARY_SCHEMA,
         },
-      ],
+      },
     }),
   }, 45000);
 
@@ -75,12 +102,26 @@ async function summarizePaper(paper, { apiKey, model }) {
   }
 
   const data = await response.json();
-  const content = data.choices?.[0]?.message?.content;
+  const content = extractResponseText(data);
   if (!content) {
     throw new Error("OpenAI response did not include content");
   }
 
   return normalizeSummary(JSON.parse(content));
+}
+
+function extractResponseText(data) {
+  if (data.output_text) return data.output_text;
+
+  for (const item of data.output || []) {
+    for (const content of item.content || []) {
+      if (content.type === "output_text" && content.text) {
+        return content.text;
+      }
+    }
+  }
+
+  return "";
 }
 
 async function fetchWithTimeout(url, options, timeoutMs) {
