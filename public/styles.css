@@ -183,7 +183,7 @@ h1 {
   font-weight: 700;
 }
 
-.time-input,
+.email-input,
 .search-wrap input {
   width: 100%;
   border: 1px solid var(--line-strong);
@@ -193,20 +193,87 @@ h1 {
   outline: none;
 }
 
-.time-input {
+.email-input {
   height: 40px;
   padding: 0 10px;
   margin-bottom: 12px;
 }
 
-.toggle-row {
+.subscription-form {
+  display: grid;
+  gap: 10px;
+}
+
+.subscription-head {
   display: flex;
   align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.subscription-head button {
+  min-height: 28px;
+  padding: 0 8px;
+  border: 1px solid var(--line-strong);
+  border-radius: 6px;
+  background: #fff;
+  color: var(--ink);
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.topic-checklist {
+  display: grid;
   gap: 8px;
-  margin: 8px 0 12px;
+}
+
+.topic-check {
+  display: grid;
+  grid-template-columns: 16px 10px 1fr;
+  align-items: center;
+  gap: 8px;
+  min-height: 34px;
+  padding: 6px 8px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.64);
   color: var(--ink);
   font-size: 13px;
-  font-weight: 600;
+  font-weight: 700;
+}
+
+.topic-check input {
+  width: 16px;
+  height: 16px;
+  margin: 0;
+}
+
+.subscription-status {
+  min-height: 36px;
+  margin: 0;
+  padding: 8px 10px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.58);
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.45;
+}
+
+.subscription-status.success {
+  border-color: rgba(22, 116, 77, 0.28);
+  background: rgba(22, 116, 77, 0.07);
+  color: var(--good);
+}
+
+.subscription-status.error {
+  border-color: rgba(168, 95, 0, 0.28);
+  background: rgba(168, 95, 0, 0.07);
+  color: #764300;
 }
 
 .primary-button,
@@ -233,6 +300,11 @@ h1 {
   padding: 0 12px;
   background: #fff;
   color: var(--ink);
+}
+
+.secondary-button:disabled {
+  cursor: wait;
+  opacity: 0.66;
 }
 
 .summary-button {

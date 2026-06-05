@@ -3,6 +3,15 @@
   "functions": {
     "api/summarize.js": {
       "maxDuration": 60
+    },
+    "api/send-digest.js": {
+      "maxDuration": 60
     }
-  }
+  },
+  "crons": [
+    {
+      "path": "/api/send-digest",
+      "schedule": "30 12 * * *"
+    }
+  ]
 }

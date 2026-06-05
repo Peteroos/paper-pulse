@@ -1,15 +1,19 @@
 const state = {
   topics: [],
   papers: [],
-  activeTopic: "all",
+  activeTopic: localStorage.getItem("paperPulse.activeTopic") || "",
   selectedId: null,
   query: "",
   viewMode: localStorage.getItem("paperPulse.viewMode") || "today",
   saved: new Set(JSON.parse(localStorage.getItem("paperPulse.saved") || "[]")),
   read: new Set(JSON.parse(localStorage.getItem("paperPulse.read") || "[]")),
-  onlyFresh: localStorage.getItem("paperPulse.onlyFresh") === "true",
-  deliveryTime: localStorage.getItem("paperPulse.deliveryTime") || "08:30",
-  reminderTimer: null,
+  subscriptionEmail: localStorage.getItem("paperPulse.subscriptionEmail") || "",
+  subscriptionTopics: new Set(
+    JSON.parse(localStorage.getItem("paperPulse.subscriptionTopics") || "[]"),
+  ),
+  subscriptionMessage: "",
+  subscriptionError: "",
+  subscribing: false,
   summaryCache: JSON.parse(localStorage.getItem("paperPulse.aiSummaries") || "{}"),
   summarizing: new Set(),
   summaryErrors: new Map(),
@@ -26,9 +30,12 @@ const els = {
   refreshButton: document.querySelector("#refreshButton"),
   viewTabs: document.querySelector("#viewTabs"),
   savedList: document.querySelector("#savedList"),
-  onlyFresh: document.querySelector("#onlyFresh"),
-  deliveryTime: document.querySelector("#deliveryTime"),
-  notifyButton: document.querySelector("#notifyButton"),
+  subscriptionForm: document.querySelector("#subscriptionForm"),
+  emailInput: document.querySelector("#emailInput"),
+  subscriptionTopics: document.querySelector("#subscriptionTopics"),
+  subscriptionStatus: document.querySelector("#subscriptionStatus"),
+  selectAllTopics: document.querySelector("#selectAllTopics"),
+  subscribeButton: document.querySelector("#subscribeButton"),
   dateLine: document.querySelector("#dateLine"),
 };
 
@@ -38,10 +45,8 @@ async function init() {
   els.dateLine.textContent = new Intl.DateTimeFormat("zh-CN", {
     dateStyle: "full",
   }).format(new Date());
-  els.onlyFresh.checked = state.onlyFresh;
-  els.deliveryTime.value = state.deliveryTime;
+  els.emailInput.value = state.subscriptionEmail;
   bindEvents();
-  scheduleReminder();
   renderLoading();
   await loadPapers();
 }
@@ -61,36 +66,25 @@ function bindEvents() {
       state.viewMode = button.dataset.view;
       localStorage.setItem("paperPulse.viewMode", state.viewMode);
       const papers = filteredPapers();
-      state.selectedId = papers[0]?.id || state.selectedId;
+      state.selectedId = papers[0]?.id || null;
       render();
     });
   });
 
-  els.onlyFresh.addEventListener("change", (event) => {
-    state.onlyFresh = event.target.checked;
-    localStorage.setItem("paperPulse.onlyFresh", String(state.onlyFresh));
-    render();
+  els.emailInput.addEventListener("input", (event) => {
+    state.subscriptionEmail = event.target.value.trim();
+    localStorage.setItem("paperPulse.subscriptionEmail", state.subscriptionEmail);
   });
 
-  els.deliveryTime.addEventListener("change", (event) => {
-    state.deliveryTime = event.target.value || "08:30";
-    localStorage.setItem("paperPulse.deliveryTime", state.deliveryTime);
-    scheduleReminder();
+  els.selectAllTopics.addEventListener("click", () => {
+    state.subscriptionTopics = new Set(state.topics.map((topic) => topic.id));
+    persistSubscriptionTopics();
+    renderSubscriptionTopics();
   });
 
-  els.notifyButton.addEventListener("click", async () => {
-    if (!("Notification" in window)) {
-      els.fetchStatus.textContent = "当前浏览器不支持提醒";
-      return;
-    }
-    const permission = await Notification.requestPermission();
-    if (permission === "granted") {
-      localStorage.setItem("paperPulse.notifications", "true");
-      scheduleReminder();
-      new Notification("Paper Pulse", {
-        body: `每日 ${state.deliveryTime} 查看你的论文推送。`,
-      });
-    }
+  els.subscriptionForm.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    await saveSubscription();
   });
 }
 
@@ -105,8 +99,10 @@ async function loadPapers(force = false) {
       const cachedSummary = state.summaryCache[paper.arxivId];
       return cachedSummary && !paper.aiSummary ? { ...paper, aiSummary: cachedSummary } : paper;
     });
+    normalizeActiveTopic();
+    initializeSubscriptionTopics();
     if (!state.selectedId && state.papers.length) {
-      state.selectedId = state.papers[0].id;
+      state.selectedId = filteredPapers()[0]?.id || state.papers[0].id;
     }
     const fetchedAt = data.fetchedAt ? formatTime(data.fetchedAt) : "刚刚";
     els.fetchStatus.textContent = data.error ? `使用缓存：${data.error}` : `更新于 ${fetchedAt}`;
@@ -150,6 +146,7 @@ function render() {
   renderPaperList();
   renderDetail();
   renderSaved();
+  renderSubscriptionTopics();
   window.lucide?.createIcons();
 }
 
@@ -165,13 +162,10 @@ function renderLoading() {
 
 function renderTopics() {
   const counts = getCounts();
-  const buttons = [
-    { id: "all", name: "全部方向", color: "#191816", count: filteredPapers("all").length },
-    ...state.topics.map((topic) => ({
-      ...topic,
-      count: counts[topic.id] || 0,
-    })),
-  ];
+  const buttons = state.topics.map((topic) => ({
+    ...topic,
+    count: counts[topic.id] || 0,
+  }));
 
   els.topicNav.innerHTML = buttons
     .map(
@@ -189,6 +183,7 @@ function renderTopics() {
   els.topicNav.querySelectorAll("button").forEach((button) => {
     button.addEventListener("click", () => {
       state.activeTopic = button.dataset.topic;
+      localStorage.setItem("paperPulse.activeTopic", state.activeTopic);
       const papers = filteredPapers();
       state.selectedId = papers[0]?.id || null;
       render();
@@ -224,10 +219,10 @@ function renderSummary() {
 function renderPaperList() {
   const papers = filteredPapers();
   const activeTopic = state.topics.find((topic) => topic.id === state.activeTopic);
-  els.streamTitle.textContent = `${activeTopic?.name || "全部方向"} · ${getViewLabel()}`;
+  els.streamTitle.textContent = `${activeTopic?.name || "论文方向"} · ${getViewLabel()}`;
 
   if (!papers.length) {
-    els.paperList.innerHTML = `<div class="empty-card">没有匹配论文，换个关键词或关闭 7 天过滤。</div>`;
+    els.paperList.innerHTML = `<div class="empty-card">没有匹配论文，换个关键词或切换方向。</div>`;
     return;
   }
 
@@ -388,21 +383,77 @@ function renderSaved() {
     .join("");
 }
 
+function renderSubscriptionTopics() {
+  if (!state.topics.length) {
+    els.subscriptionTopics.innerHTML = `<p class="empty-list">方向加载中</p>`;
+    return;
+  }
+
+  els.subscriptionTopics.innerHTML = state.topics
+    .map(
+      (topic) => `
+        <label class="topic-check" style="--topic-color: ${topic.color}">
+          <input type="checkbox" value="${topic.id}" ${state.subscriptionTopics.has(topic.id) ? "checked" : ""} />
+          <span class="topic-dot"></span>
+          <span>${escapeHtml(topic.name)}</span>
+        </label>
+      `,
+    )
+    .join("");
+
+  els.subscriptionTopics.querySelectorAll("input").forEach((input) => {
+    input.addEventListener("change", () => {
+      if (input.checked) {
+        state.subscriptionTopics.add(input.value);
+      } else {
+        state.subscriptionTopics.delete(input.value);
+      }
+      state.subscriptionMessage = "";
+      state.subscriptionError = "";
+      persistSubscriptionTopics();
+      renderSubscriptionStatus();
+    });
+  });
+
+  renderSubscriptionStatus();
+}
+
+function renderSubscriptionStatus() {
+  els.subscribeButton.disabled = state.subscribing;
+  els.subscriptionStatus.classList.toggle("error", Boolean(state.subscriptionError));
+  els.subscriptionStatus.classList.toggle("success", Boolean(state.subscriptionMessage));
+  const buttonLabel = els.subscribeButton.querySelector("span");
+  if (buttonLabel) {
+    buttonLabel.textContent = state.subscribing ? "正在保存" : "订阅每日推送";
+  }
+
+  if (state.subscriptionError) {
+    els.subscriptionStatus.textContent = state.subscriptionError;
+    return;
+  }
+
+  if (state.subscriptionMessage) {
+    els.subscriptionStatus.textContent = state.subscriptionMessage;
+    return;
+  }
+
+  els.subscriptionStatus.textContent = `每天 08:30 左右发送 ${state.subscriptionTopics.size || 0} 个方向的热门论文。`;
+}
+
 function filteredPapers(topicId = state.activeTopic) {
   const windowDays = getViewWindowDays();
 
   return state.papers
     .filter((paper) => {
-    const topicMatch = topicId === "all" || paper.topicId === topicId;
-    const viewMatch = daysSince(paper.published) <= windowDays;
-    const freshMatch = !state.onlyFresh || daysSince(paper.published) <= 7;
-    const queryMatch =
-      !state.query ||
-      `${paper.title} ${paper.summary} ${paper.authors.join(" ")}`
-        .toLowerCase()
-        .includes(state.query);
-    return topicMatch && viewMatch && freshMatch && queryMatch;
-  })
+      const topicMatch = paper.topicId === topicId;
+      const viewMatch = daysSince(paper.published) <= windowDays;
+      const queryMatch =
+        !state.query ||
+        `${paper.title} ${paper.summary} ${paper.authors.join(" ")}`
+          .toLowerCase()
+          .includes(state.query);
+      return topicMatch && viewMatch && queryMatch;
+    })
     .sort((a, b) => {
       if (state.viewMode !== "today") {
         return Number(b.hotScore || 0) - Number(a.hotScore || 0);
@@ -480,6 +531,87 @@ function persist(key) {
   localStorage.setItem(`paperPulse.${key}`, JSON.stringify([...state[key]]));
 }
 
+function persistSubscriptionTopics() {
+  localStorage.setItem(
+    "paperPulse.subscriptionTopics",
+    JSON.stringify([...state.subscriptionTopics]),
+  );
+}
+
+function normalizeActiveTopic() {
+  if (state.topics.some((topic) => topic.id === state.activeTopic)) {
+    return;
+  }
+
+  state.activeTopic = state.topics[0]?.id || "";
+  if (state.activeTopic) {
+    localStorage.setItem("paperPulse.activeTopic", state.activeTopic);
+  }
+}
+
+function initializeSubscriptionTopics() {
+  const allowedTopicIds = new Set(state.topics.map((topic) => topic.id));
+  state.subscriptionTopics = new Set(
+    [...state.subscriptionTopics].filter((topicId) => allowedTopicIds.has(topicId)),
+  );
+
+  if (!state.subscriptionTopics.size) {
+    state.subscriptionTopics = new Set(state.topics.map((topic) => topic.id));
+  }
+
+  persistSubscriptionTopics();
+}
+
+async function saveSubscription() {
+  state.subscriptionEmail = els.emailInput.value.trim();
+  localStorage.setItem("paperPulse.subscriptionEmail", state.subscriptionEmail);
+  state.subscriptionMessage = "";
+  state.subscriptionError = "";
+
+  if (!state.subscriptionEmail) {
+    state.subscriptionError = "请先输入邮箱。";
+    renderSubscriptionStatus();
+    return;
+  }
+
+  if (!state.subscriptionTopics.size) {
+    state.subscriptionError = "至少选择一个方向。";
+    renderSubscriptionStatus();
+    return;
+  }
+
+  state.subscribing = true;
+  renderSubscriptionStatus();
+
+  try {
+    const response = await fetch(`${getApiBase()}api/subscribe`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email: state.subscriptionEmail,
+        topicIds: [...state.subscriptionTopics],
+      }),
+    });
+
+    const payload = await safeReadJson(response);
+    if (!response.ok) {
+      throw new Error(payload.error || `API returned ${response.status}`);
+    }
+
+    state.subscriptionMessage = payload.message || "订阅已保存。";
+  } catch (error) {
+    state.subscriptionError =
+      location.hostname.endsWith("github.io") && !window.PAPER_PULSE_API_BASE
+        ? "GitHub Pages 不能保存邮箱。请使用 Vercel 网址，或在 config.js 配置 PAPER_PULSE_API_BASE。"
+        : error.message;
+  } finally {
+    state.subscribing = false;
+    renderSubscriptionStatus();
+  }
+}
+
 async function summarizeSelectedPaper(paper) {
   state.summarizing.add(paper.id);
   state.summaryErrors.delete(paper.id);
@@ -547,34 +679,6 @@ async function safeReadJson(response) {
   } catch {
     return {};
   }
-}
-
-function scheduleReminder() {
-  if (state.reminderTimer) {
-    clearTimeout(state.reminderTimer);
-  }
-
-  if (
-    localStorage.getItem("paperPulse.notifications") !== "true" ||
-    !("Notification" in window) ||
-    Notification.permission !== "granted"
-  ) {
-    return;
-  }
-
-  const [hour, minute] = state.deliveryTime.split(":").map(Number);
-  const next = new Date();
-  next.setHours(hour, minute, 0, 0);
-  if (next <= new Date()) {
-    next.setDate(next.getDate() + 1);
-  }
-
-  state.reminderTimer = setTimeout(() => {
-    new Notification("Paper Pulse 今日论文", {
-      body: "AI 医学影像、3D 重建、世界模型方向已准备好。",
-    });
-    scheduleReminder();
-  }, next.getTime() - Date.now());
 }
 
 function escapeHtml(value) {

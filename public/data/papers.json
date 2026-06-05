@@ -1,5 +1,5 @@
 {
-  "fetchedAt": 1780693414969,
+  "fetchedAt": 1780694722995,
   "papers": [
     {
       "id": "http://arxiv.org/abs/2606.04705v1",
@@ -6173,7 +6173,7 @@
         "cs.LG"
       ],
       "score": 6,
-      "hotScore": 72
+      "hotScore": 70
     },
     {
       "id": "http://arxiv.org/abs/2605.29343v2",
@@ -8309,7 +8309,7 @@
   "aiSummary": {
     "enabled": false,
     "model": "gpt-5-nano",
-    "generatedAt": 1780693414970,
+    "generatedAt": 1780694722996,
     "newSummaries": 0,
     "cachedSummaries": 0
   },

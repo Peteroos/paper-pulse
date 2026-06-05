@@ -28,19 +28,30 @@
 
         <section class="panel compact">
           <div class="panel-title">
-            <i data-lucide="bell"></i>
-            <span>推送设置</span>
+            <i data-lucide="mail-plus"></i>
+            <span>邮件订阅</span>
           </div>
-          <label class="field-label" for="deliveryTime">每日时间</label>
-          <input id="deliveryTime" class="time-input" type="time" value="08:30" />
-          <label class="toggle-row">
-            <input id="onlyFresh" type="checkbox" />
-            <span>只看 7 天内论文</span>
-          </label>
-          <button id="notifyButton" class="secondary-button" type="button">
-            <i data-lucide="bell-ring"></i>
-            <span>开启浏览器提醒</span>
-          </button>
+          <form id="subscriptionForm" class="subscription-form">
+            <label class="field-label" for="emailInput">邮箱</label>
+            <input
+              id="emailInput"
+              class="email-input"
+              type="email"
+              placeholder="you@example.com"
+              autocomplete="email"
+              required
+            />
+            <div class="subscription-head">
+              <span>感兴趣方向</span>
+              <button id="selectAllTopics" type="button">全选</button>
+            </div>
+            <div id="subscriptionTopics" class="topic-checklist"></div>
+            <button id="subscribeButton" class="secondary-button" type="submit">
+              <i data-lucide="send"></i>
+              <span>订阅每日推送</span>
+            </button>
+            <p id="subscriptionStatus" class="subscription-status" aria-live="polite"></p>
+          </form>
         </section>
 
         <section class="panel compact saved-panel">
@@ -83,7 +94,7 @@
             <div class="stream-header">
               <div>
                 <p class="section-label">Inbox</p>
-                <h3 id="streamTitle">全部方向</h3>
+                <h3 id="streamTitle">论文方向</h3>
               </div>
               <div id="fetchStatus" class="fetch-status">准备加载</div>
             </div>
