@@ -33,7 +33,7 @@ http://localhost:4173
 - `npm run generate` 会抓取最新论文并生成 `public/data/papers.json`
 - `.github/workflows/pages.yml` 会每天 12:20 UTC 自动更新并部署
 - 静态站点从 `public/` 发布，不依赖你的电脑长期在线
-- GitHub Pages 版本只展示论文数据；实时 AI 总结需要一个后端 API，推荐部署到 Vercel
+- GitHub Pages 版本只抓取和展示论文数据，不会在 build 时调用 OpenAI；实时 AI 总结需要一个后端 API，推荐部署到 Vercel
 
 部署到 GitHub 后，在仓库的 Settings → Pages 里选择 GitHub Actions。随后每次 push、手动运行 workflow、或每日定时任务都会更新网站。
 
