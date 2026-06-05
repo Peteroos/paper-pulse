@@ -1,4 +1,4 @@
-import { isAccessCodeValid } from "./access-code.js";
+const ACCESS_CODE = "paperpulse2026";
 
 const state = {
   topics: [],
@@ -84,7 +84,7 @@ function bindAccessGate() {
     event.preventDefault();
     const code = els.accessCode.value.trim();
 
-    if (!isAccessCodeValid(code)) {
+    if (code !== ACCESS_CODE) {
       els.accessError.textContent = "访问码不正确。";
       els.accessCode.select();
       return;
