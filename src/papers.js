@@ -45,6 +45,40 @@ export const topics = [
     webQuery:
       '"world model" OR "world models" OR "video generation" OR "model-based reinforcement learning" OR "embodied AI"',
   },
+  {
+    id: "continual-learning",
+    name: "连续学习",
+    shortName: "连续学习",
+    color: "#2f6f4e",
+    query:
+      '(all:"continual learning" OR all:"lifelong learning" OR all:"catastrophic forgetting" OR all:"incremental learning" OR all:"online learning") AND (cat:cs.LG OR cat:cs.AI OR cat:cs.CV OR cat:cs.CL)',
+    focus: [
+      "continual learning",
+      "lifelong learning",
+      "catastrophic forgetting",
+      "incremental learning",
+      "online learning",
+    ],
+    webQuery:
+      '"continual learning" OR "lifelong learning" OR "catastrophic forgetting" OR "incremental learning" OR "online learning"',
+  },
+  {
+    id: "speculative-decoding",
+    name: "投机解码",
+    shortName: "投机解码",
+    color: "#b45f06",
+    query:
+      '(all:"speculative decoding" OR all:"speculative sampling" OR all:"draft model" OR all:"LLM inference acceleration" OR all:"parallel decoding") AND (cat:cs.CL OR cat:cs.LG OR cat:cs.AI)',
+    focus: [
+      "speculative decoding",
+      "speculative sampling",
+      "draft model",
+      "inference acceleration",
+      "parallel decoding",
+    ],
+    webQuery:
+      '"speculative decoding" OR "speculative sampling" OR "draft model" OR "LLM inference acceleration" OR "parallel decoding"',
+  },
 ];
 
 export async function fetchDailyPapers() {
