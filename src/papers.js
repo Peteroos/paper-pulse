@@ -1,5 +1,6 @@
 import * as cheerio from "cheerio";
 import { XMLParser } from "fast-xml-parser";
+import { scorePaperPopularity } from "./ranking.js";
 
 const ARXIV_ENDPOINT = "https://export.arxiv.org/api/query";
 const ARXIV_SEARCH_ENDPOINT = "https://arxiv.org/search/";
@@ -57,9 +58,14 @@ export async function fetchDailyPapers() {
     papers.push(...topicPapers);
   }
 
+  const ranked = rankAndDedupe(papers).map((paper) => ({
+    ...paper,
+    hotScore: scorePaperPopularity(paper),
+  }));
+
   return {
     fetchedAt: Date.now(),
-    papers: rankAndDedupe(papers),
+    papers: ranked,
     topics,
     error: null,
   };
@@ -69,7 +75,7 @@ async function fetchArxivTopic(topic) {
   const params = new URLSearchParams({
     search_query: topic.query,
     start: "0",
-    max_results: "18",
+    max_results: "60",
     sortBy: "submittedDate",
     sortOrder: "descending",
   });
@@ -98,7 +104,7 @@ async function fetchArxivSearchPage(topic) {
     searchtype: "all",
     abstracts: "show",
     order: "-announced_date_first",
-    size: "25",
+    size: "50",
   });
   const response = await fetchWithTimeout(`${ARXIV_SEARCH_ENDPOINT}?${params}`, 45000);
 
@@ -150,7 +156,7 @@ async function fetchArxivSearchPage(topic) {
     });
   });
 
-  return papers.slice(0, 18);
+  return papers.slice(0, 50);
 }
 
 function toPaper(entry, topic) {

@@ -4,6 +4,7 @@ const state = {
   activeTopic: "all",
   selectedId: null,
   query: "",
+  viewMode: localStorage.getItem("paperPulse.viewMode") || "today",
   saved: new Set(JSON.parse(localStorage.getItem("paperPulse.saved") || "[]")),
   read: new Set(JSON.parse(localStorage.getItem("paperPulse.read") || "[]")),
   onlyFresh: localStorage.getItem("paperPulse.onlyFresh") === "true",
@@ -20,6 +21,7 @@ const els = {
   fetchStatus: document.querySelector("#fetchStatus"),
   searchInput: document.querySelector("#searchInput"),
   refreshButton: document.querySelector("#refreshButton"),
+  viewTabs: document.querySelector("#viewTabs"),
   savedList: document.querySelector("#savedList"),
   onlyFresh: document.querySelector("#onlyFresh"),
   deliveryTime: document.querySelector("#deliveryTime"),
@@ -49,6 +51,16 @@ function bindEvents() {
 
   els.refreshButton.addEventListener("click", async () => {
     await loadPapers(true);
+  });
+
+  els.viewTabs.querySelectorAll("button").forEach((button) => {
+    button.addEventListener("click", () => {
+      state.viewMode = button.dataset.view;
+      localStorage.setItem("paperPulse.viewMode", state.viewMode);
+      const papers = filteredPapers();
+      state.selectedId = papers[0]?.id || state.selectedId;
+      render();
+    });
   });
 
   els.onlyFresh.addEventListener("change", (event) => {
@@ -127,11 +139,18 @@ async function fetchPaperData(force) {
 
 function render() {
   renderTopics();
+  renderViewTabs();
   renderSummary();
   renderPaperList();
   renderDetail();
   renderSaved();
   window.lucide?.createIcons();
+}
+
+function renderViewTabs() {
+  els.viewTabs.querySelectorAll("button").forEach((button) => {
+    button.classList.toggle("active", button.dataset.view === state.viewMode);
+  });
 }
 
 function renderLoading() {
@@ -174,14 +193,14 @@ function renderTopics() {
 function renderSummary() {
   const freshCount = state.papers.filter((paper) => daysSince(paper.published) <= 7).length;
   const savedCount = state.saved.size;
-  const unreadCount = state.papers.filter((paper) => !state.read.has(paper.id)).length;
   const topTopic = getTopTopic();
+  const aiCount = state.papers.filter((paper) => paper.aiSummary).length;
 
   const metrics = [
     [state.papers.length, "今日候选论文"],
     [freshCount, "7 天内新增"],
-    [savedCount, "已保存论文"],
-    [topTopic, "最活跃方向"],
+    [topTopic, `${getViewLabel()}最活跃`],
+    [aiCount || savedCount, aiCount ? "AI 总结覆盖" : "已保存论文"],
   ];
 
   els.summaryStrip.innerHTML = metrics
@@ -199,7 +218,7 @@ function renderSummary() {
 function renderPaperList() {
   const papers = filteredPapers();
   const activeTopic = state.topics.find((topic) => topic.id === state.activeTopic);
-  els.streamTitle.textContent = activeTopic?.name || "全部方向";
+  els.streamTitle.textContent = `${activeTopic?.name || "全部方向"} · ${getViewLabel()}`;
 
   if (!papers.length) {
     els.paperList.innerHTML = `<div class="empty-card">没有匹配论文，换个关键词或关闭 7 天过滤。</div>`;
@@ -217,6 +236,8 @@ function renderPaperList() {
             <div class="paper-meta-row">
               <span class="badge">${paper.topicName}</span>
               <span class="paper-date">${formatDate(paper.published)}</span>
+              ${state.viewMode !== "today" ? `<span class="paper-date">热度 ${Math.round(paper.hotScore || 0)}</span>` : ""}
+              ${paper.aiSummary ? `<span class="paper-date">AI 总结</span>` : ""}
               ${read ? `<span class="paper-date">已读</span>` : ""}
             </div>
             <h4 class="paper-title">${escapeHtml(paper.title)}</h4>
@@ -274,11 +295,51 @@ function renderDetail() {
   }
 
   els.detailPane.style.setProperty("--topic-color", paper.topicColor);
+  const summary = paper.aiSummary;
   els.detailPane.innerHTML = `
-    <span class="badge detail-topic">${paper.topicName}</span>
+    <div class="detail-head">
+      <span class="badge detail-topic">${paper.topicName}</span>
+      ${paper.aiSummary ? `<span class="detail-chip">AI 总结</span>` : `<span class="detail-chip muted">原始摘要</span>`}
+    </div>
     <h3>${escapeHtml(paper.title)}</h3>
     <p class="detail-authors">${escapeHtml(formatAuthors(paper.authors, 8))}</p>
-    <p class="detail-summary">${escapeHtml(paper.summary)}</p>
+    ${
+      summary
+        ? `
+          <section class="ai-summary">
+            <p class="ai-headline">${escapeHtml(summary.headline)}</p>
+            <div class="detail-block">
+              <h4>核心贡献</h4>
+              <ul>${summary.bullets.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul>
+            </div>
+            <div class="detail-block">
+              <h4>为什么值得看</h4>
+              <p>${escapeHtml(summary.why_read)}</p>
+            </div>
+            <div class="detail-block two-col">
+              <div>
+                <h4>方法关键词</h4>
+                <div class="method-list">
+                  ${summary.methods.map((item) => `<span>${escapeHtml(item)}</span>`).join("")}
+                </div>
+              </div>
+              <div>
+                <h4>适合谁读</h4>
+                <p>${escapeHtml(summary.audience)}</p>
+              </div>
+            </div>
+            <div class="detail-block caution">
+              <h4>注意点</h4>
+              <p>${escapeHtml(summary.limitations)}</p>
+            </div>
+          </section>
+        `
+        : `<p class="detail-summary">${escapeHtml(paper.summary)}</p>`
+    }
+    <details class="abstract-details">
+      <summary>原始摘要</summary>
+      <p class="detail-summary">${escapeHtml(paper.summary)}</p>
+    </details>
     <div class="category-list">
       ${paper.categories.slice(0, 6).map((category) => `<span class="category-pill">${category}</span>`).join("")}
     </div>
@@ -302,20 +363,30 @@ function renderSaved() {
 }
 
 function filteredPapers(topicId = state.activeTopic) {
-  return state.papers.filter((paper) => {
+  const windowDays = getViewWindowDays();
+
+  return state.papers
+    .filter((paper) => {
     const topicMatch = topicId === "all" || paper.topicId === topicId;
+    const viewMatch = daysSince(paper.published) <= windowDays;
     const freshMatch = !state.onlyFresh || daysSince(paper.published) <= 7;
     const queryMatch =
       !state.query ||
       `${paper.title} ${paper.summary} ${paper.authors.join(" ")}`
         .toLowerCase()
         .includes(state.query);
-    return topicMatch && freshMatch && queryMatch;
-  });
+    return topicMatch && viewMatch && freshMatch && queryMatch;
+  })
+    .sort((a, b) => {
+      if (state.viewMode !== "today") {
+        return Number(b.hotScore || 0) - Number(a.hotScore || 0);
+      }
+      return new Date(b.published).getTime() - new Date(a.published).getTime();
+    });
 }
 
 function getCounts() {
-  return state.papers.reduce((acc, paper) => {
+  return state.papers.filter((paper) => daysSince(paper.published) <= getViewWindowDays()).reduce((acc, paper) => {
     acc[paper.topicId] = (acc[paper.topicId] || 0) + 1;
     return acc;
   }, {});
@@ -327,6 +398,22 @@ function getTopTopic() {
     .map((topic) => ({ ...topic, count: counts[topic.id] || 0 }))
     .sort((a, b) => b.count - a.count)[0];
   return top?.shortName || "-";
+}
+
+function getViewWindowDays() {
+  return {
+    today: 2,
+    week: 7,
+    month: 30,
+  }[state.viewMode] || 2;
+}
+
+function getViewLabel() {
+  return {
+    today: "今日",
+    week: "本周热门",
+    month: "本月热门",
+  }[state.viewMode] || "今日";
 }
 
 function formatAuthors(authors, limit = 4) {

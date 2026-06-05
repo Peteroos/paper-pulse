@@ -33,8 +33,21 @@ http://localhost:4173
 - `npm run generate` 会抓取最新论文并生成 `public/data/papers.json`
 - `.github/workflows/pages.yml` 会每天 12:20 UTC 自动更新并部署
 - 静态站点从 `public/` 发布，不依赖你的电脑长期在线
+- 如果仓库 Secret 里配置了 `OPENAI_API_KEY`，生成脚本会只为新论文补充 AI 中文总结，并复用旧缓存来省钱
 
 部署到 GitHub 后，在仓库的 Settings → Pages 里选择 GitHub Actions。随后每次 push、手动运行 workflow、或每日定时任务都会更新网站。
+
+## OpenAI API Key
+
+在 GitHub 仓库里添加 Secret：
+
+1. 打开 Settings → Secrets and variables → Actions。
+2. 在 Secrets 里点击 New repository secret。
+3. Name 填 `OPENAI_API_KEY`。
+4. Secret 填你的 OpenAI API key。
+5. 保存后手动运行一次 `Update Papers and Deploy Pages` workflow。
+
+这个 key 不会进入前端代码，也不会写入 `public/data/papers.json`。GitHub Actions 只在服务器端运行生成脚本时读取它，网站用户只能看到生成好的 AI 总结。
 
 ## 数据来源
 
