@@ -1,5 +1,6 @@
 const OPENAI_ENDPOINT = "https://api.openai.com/v1/chat/completions";
 const DEFAULT_MODEL = "gpt-5-nano";
+const DEFAULT_SUMMARY_LIMIT = 12;
 
 export async function summarizePapers(papers, { apiKey = process.env.OPENAI_API_KEY } = {}) {
   if (!apiKey) {
@@ -7,10 +8,13 @@ export async function summarizePapers(papers, { apiKey = process.env.OPENAI_API_
   }
 
   const model = process.env.OPENAI_MODEL || DEFAULT_MODEL;
-  const limit = Number(process.env.AI_SUMMARY_LIMIT || papers.length);
+  const limit = getSummaryLimit(process.env.AI_SUMMARY_LIMIT);
   const summaries = new Map();
+  const selectedPapers = papers.slice(0, limit);
 
-  for (const paper of papers.slice(0, limit)) {
+  console.log(`AI summaries enabled: summarizing ${selectedPapers.length}/${papers.length} missing papers`);
+
+  for (const paper of selectedPapers) {
     try {
       const summary = await summarizePaper(paper, { apiKey, model });
       summaries.set(paper.arxivId, summary);
@@ -23,8 +27,16 @@ export async function summarizePapers(papers, { apiKey = process.env.OPENAI_API_
   return summaries;
 }
 
+export function getSummaryLimit(value) {
+  const parsed = Number(value || DEFAULT_SUMMARY_LIMIT);
+  if (!Number.isFinite(parsed) || parsed < 0) {
+    return DEFAULT_SUMMARY_LIMIT;
+  }
+  return Math.floor(parsed);
+}
+
 async function summarizePaper(paper, { apiKey, model }) {
-  const response = await fetch(OPENAI_ENDPOINT, {
+  const response = await fetchWithTimeout(OPENAI_ENDPOINT, {
     method: "POST",
     headers: {
       Authorization: `Bearer ${apiKey}`,
@@ -55,7 +67,7 @@ async function summarizePaper(paper, { apiKey, model }) {
         },
       ],
     }),
-  });
+  }, 45000);
 
   if (!response.ok) {
     const text = await response.text();
@@ -69,6 +81,20 @@ async function summarizePaper(paper, { apiKey, model }) {
   }
 
   return normalizeSummary(JSON.parse(content));
+}
+
+async function fetchWithTimeout(url, options, timeoutMs) {
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), timeoutMs);
+
+  try {
+    return await fetch(url, {
+      ...options,
+      signal: controller.signal,
+    });
+  } finally {
+    clearTimeout(timeout);
+  }
 }
 
 function normalizeSummary(summary) {

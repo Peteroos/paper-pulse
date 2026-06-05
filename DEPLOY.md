@@ -47,3 +47,5 @@ To enable cached AI summaries:
 4. Run `Update Papers and Deploy Pages` manually once.
 
 The key is only available inside GitHub Actions. It is not bundled into the static website, and users cannot see it from the browser.
+
+By default the workflow summarizes at most 12 new papers per run. Add an Actions variable named `AI_SUMMARY_LIMIT` if you want a smaller or larger batch.
