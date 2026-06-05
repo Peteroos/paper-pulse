@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Paper Pulse</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <div class="brand-row">
+          <div class="brand-mark">P</div>
+          <div>
+            <p class="brand-kicker">Daily Research</p>
+            <h1>Paper Pulse</h1>
+          </div>
+        </div>
+
+        <nav class="topic-nav" id="topicNav" aria-label="论文方向"></nav>
+
+        <section class="panel compact">
+          <div class="panel-title">
+            <i data-lucide="bell"></i>
+            <span>推送设置</span>
+          </div>
+          <label class="field-label" for="deliveryTime">每日时间</label>
+          <input id="deliveryTime" class="time-input" type="time" value="08:30" />
+          <label class="toggle-row">
+            <input id="onlyFresh" type="checkbox" />
+            <span>只看 7 天内论文</span>
+          </label>
+          <button id="notifyButton" class="secondary-button" type="button">
+            <i data-lucide="bell-ring"></i>
+            <span>开启浏览器提醒</span>
+          </button>
+        </section>
+
+        <section class="panel compact saved-panel">
+          <div class="panel-title">
+            <i data-lucide="bookmark"></i>
+            <span>已保存</span>
+          </div>
+          <div id="savedList" class="saved-list"></div>
+        </section>
+      </aside>
+
+      <main class="main">
+        <header class="topbar">
+          <div>
+            <p class="date-line" id="dateLine"></p>
+            <h2>今日论文推送</h2>
+          </div>
+          <div class="top-actions">
+            <div class="search-wrap">
+              <i data-lucide="search"></i>
+              <input id="searchInput" type="search" placeholder="搜索标题、作者、摘要" />
+            </div>
+            <button id="refreshButton" class="primary-button" type="button">
+              <i data-lucide="refresh-cw"></i>
+              <span>刷新</span>
+            </button>
+          </div>
+        </header>
+
+        <section class="summary-strip" id="summaryStrip" aria-label="今日概览"></section>
+
+        <section class="content-grid">
+          <div class="paper-stream">
+            <div class="stream-header">
+              <div>
+                <p class="section-label">Inbox</p>
+                <h3 id="streamTitle">全部方向</h3>
+              </div>
+              <div id="fetchStatus" class="fetch-status">准备加载</div>
+            </div>
+            <div id="paperList" class="paper-list"></div>
+          </div>
+
+          <aside class="detail-pane" id="detailPane">
+            <div class="empty-detail">
+              <i data-lucide="scan-text"></i>
+              <p>选择一篇论文查看摘要和链接</p>
+            </div>
+          </aside>
+        </section>
+      </main>
+    </div>
+
+    <script src="app.js" type="module"></script>
+  </body>
+</html>

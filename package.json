@@ -1,0 +1,16 @@
+{
+  "name": "paper-pulse",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js",
+    "generate": "node scripts/generate-data.js"
+  },
+  "dependencies": {
+    "cheerio": "1.0.0",
+    "express": "^5.1.0",
+    "fast-xml-parser": "^5.2.5"
+  }
+}

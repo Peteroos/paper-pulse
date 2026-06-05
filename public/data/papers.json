@@ -1,0 +1,1405 @@
+{
+  "fetchedAt": 1780684179694,
+  "papers": [
+    {
+      "id": "http://arxiv.org/abs/2606.04705v1",
+      "arxivId": "2606.04705v1",
+      "title": "Enhancing MedSAM with a Lightweight Box Predictor for Medical Image Segmentation",
+      "authors": [
+        "Amirhossein Movahedisefat",
+        "Amirreza Fateh",
+        "Mohammad Reza Mohammadi"
+      ],
+      "summary": "Semantic segmentation in medical imaging is a critical yet challenging task due to data scarcity and high variability across modalities. While foundation models like the Segment Anything Model (SAM) show promise, they often struggle with medical images without specific adaptation. Moreover, point prompts, despite being the most natural form of user interaction, provide insufficient spatial context for reliable segmentation, particularly when target structures are irregular or poorly contrasted. In this paper, we propose an enhanced segmentation framework that integrates a lightweight Box Predictor module into the MedSAM architecture. The Box Predictor estimates an approximate bounding box from a single user click using localized image embedding features, providing spatial guidance that reduces the ambiguity of point prompts, while introducing only 1.6M additional parameters and negligible inference overhead. We introduce a two-stage training pipeline where the Box Predictor is trained independently before being integrated into MedSAM. To validate the generalization capability of our method, we conduct extensive evaluations on four diverse datasets (FLARE22, BRISC, BUSI, LungSegDB) spanning distinct imaging modalities, including CT, MRI, and Ultrasound. Our method improves segmentation accuracy and robustness across varied anatomical structures and imaging domains, achieving Dice scores of 0.89 (BUSI), 0.93 (FLARE22), 0.88 (BRISC), and 0.98 (LungSegDB). Code is available at https://github.com/Amirhosseinmovahedi/MedSAM-BoxPredictor",
+      "published": "2026-06-03T10:34:15Z",
+      "updated": "2026-06-03T10:34:15Z",
+      "abstractUrl": "http://arxiv.org/abs/2606.04705v1",
+      "pdfUrl": "https://arxiv.org/pdf/2606.04705v1",
+      "topicId": "medical-imaging",
+      "topicName": "AI 医学影像",
+      "topicColor": "#cf3f58",
+      "categories": [
+        "cs.CV",
+        "cs.AI"
+      ],
+      "score": 17
+    },
+    {
+      "id": "http://arxiv.org/abs/2606.06014v1",
+      "arxivId": "2606.06014v1",
+      "title": "PLAN-S: Bridging Planning with Latent Style Dynamics for Autonomous Driving World Models",
+      "authors": [
+        "Xiaoyun Qiu",
+        "Jingtao He",
+        "Yijie Chen",
+        "Yusong Huang",
+        "Haotian Wang",
+        "Yixuan Wang",
+        "Xinhu Zheng"
+      ],
+      "summary": "Latent world models (LWMs) have strengthened end-to-end autonomous driving by forecasting compact scene dynamics for downstream planning. However, existing LWM-based planners usually generate trajectories directly from entangled latent representations. This compact latent-to-planner pathway lacks explicit modeling of risk, drivability, and diverse style preferences, making driving-style dynamics difficult to supervise, inspect, or modulate before a final trajectory is selected. We propose PLAN-S (PLANning with latent Style dynamics), a planner-facing bridge that addresses this compactness-controllability dilemma by decoding a style-conditioned, four-channel semantic cost map from the latent representation. The cost map is conditioned on ego state and driving style and is consumed up-stream of the planning decision through two host-side interfaces: attention-level fusion for regression planners and reward-level fusion for anchor-score planners. We validate PLAN-S on two architecturally distinct hosts, ResWorld on nuScenes and WoTE on NAVSIM, while keeping the host backbones frozen to isolate the contribution of the proposed bridge. On nuScenes, PLAN-S reduces L2 at every horizon over the baseline, with 0.55 m average L2 and a 42% relative reduction in the 3 s collision rate. On NAVSIM, the rule-cost variant reaches 89.4 Predictive Driver Model Score (PDMS), while the learned cost variant provides complementary gains on baseline-challenging scenes. Ablations show that the cost pathway contributes most directly to safer trajectory selection. Qualitative results further show that PLAN-S can produce diverse cost maps, with spatially consistent variations aligned to different driving styles.",
+      "published": "2026-06-04T11:03:20Z",
+      "updated": "2026-06-04T11:03:20Z",
+      "abstractUrl": "http://arxiv.org/abs/2606.06014v1",
+      "pdfUrl": "https://arxiv.org/pdf/2606.06014v1",
+      "topicId": "world-models",
+      "topicName": "世界模型",
+      "topicColor": "#6a58c8",
+      "categories": [
+        "cs.AI",
+        "cs.RO"
+      ],
+      "score": 15
+    },
+    {
+      "id": "http://arxiv.org/abs/2606.05960v1",
+      "arxivId": "2606.05960v1",
+      "title": "Towards a Data Flywheel for Embodied Intelligence in Logistics",
+      "authors": [
+        "Anlan Yu",
+        "Zaishu Chen",
+        "Zhiqing Hong",
+        "Daqing Zhang"
+      ],
+      "summary": "Embodied intelligence is moving from laboratory demonstrations toward industrial deployment, with the logistics industry serving as a key application scenario. Learning-based policies offer a promising path beyond traditional perception-planning-control pipelines, but their scalability depends on how embodied data can be collected, organized, and reused. This research studies a data-centric framework for industrial embodied intelligence by constructing a logistics data flywheel. Our framework converts daily operations into reusable data assets, uses World Models to generate reliable supervision for long-tail parcel manipulation, and feeds deployment feedback back into policy improvement. As an initial result, \\textit{WM-DAgger} introduces a World-Model-based data aggregation framework that synthesizes out-of-distribution recovery data for robust imitation learning. Building on this result, ongoing work explores how large-scale in-the-wild multimodal data, including labeled human demonstrations, unlabeled operational videos, and system-level robot logs, can be aligned for policy learning and transformed into feedback for continual system improvement.",
+      "published": "2026-06-04T09:58:55Z",
+      "updated": "2026-06-04T09:58:55Z",
+      "abstractUrl": "http://arxiv.org/abs/2606.05960v1",
+      "pdfUrl": "https://arxiv.org/pdf/2606.05960v1",
+      "topicId": "world-models",
+      "topicName": "世界模型",
+      "topicColor": "#6a58c8",
+      "categories": [
+        "cs.RO"
+      ],
+      "score": 15
+    },
+    {
+      "id": "http://arxiv.org/abs/2606.05925v1",
+      "arxivId": "2606.05925v1",
+      "title": "Towards World Models in Biomedical Research",
+      "authors": [
+        "Guangyu Wang",
+        "Jingkun Yue",
+        "Siqi Zhang",
+        "Yu Liu",
+        "Xiaoyu Wang",
+        "Mingyuan Meng",
+        "Changwei Ji",
+        "Zongbo Han",
+        "Yulin Wang",
+        "Yang Yue",
+        "Frank Fu",
+        "Ting Chen",
+        "Song Wu",
+        "Ziwei Liu",
+        "Jiangning Song",
+        "Ming Li",
+        "Gao Huang",
+        "Xiaohong Liu",
+        "Athanasios Vasilakos",
+        "Xingcai Zhang",
+        "Ping Zhang",
+        "Yong Li"
+      ],
+      "summary": "A central goal of biomedicine is to understand, predict and ultimately control the dynamic mechanisms by which biological systems respond to perturbations, disease progression and therapeutic intervention. Although foundation models and large language models have accelerated biomedical data interpretation, most current systems remain focused on static pattern recognition rather than prospective simulation of biological futures. Here we propose biomedical world models as a paradigm for AI-driven discovery. These models learn latent representations of molecular, cellular, tissue and clinical states, together with intervention-conditioned dynamics that allow future trajectories to be simulated before actions are taken. We discuss how biomedical world models could function as data engines, environment simulators and scientific planning substrates across applications including virtual cells, organoids, virtual patients and surgical simulation. We outline the data infrastructure, evaluation benchmarks, safety constraints and governance frameworks required. Biomedical world models may provide a foundation for simulation-guided, closed-loop and experimentally actionable biomedical discovery.",
+      "published": "2026-06-04T09:28:54Z",
+      "updated": "2026-06-04T09:28:54Z",
+      "abstractUrl": "http://arxiv.org/abs/2606.05925v1",
+      "pdfUrl": "https://arxiv.org/pdf/2606.05925v1",
+      "topicId": "world-models",
+      "topicName": "世界模型",
+      "topicColor": "#6a58c8",
+      "categories": [
+        "cs.AI"
+      ],
+      "score": 15
+    },
+    {
+      "id": "http://arxiv.org/abs/2606.05773v1",
+      "arxivId": "2606.05773v1",
+      "title": "PiL-World: A Chunk-Wise World Model for VLA Policy-in-the-Loop Evaluation",
+      "authors": [
+        "Chong Ma",
+        "Taiyi Su",
+        "Jian Zhu",
+        "Jianjun Zhang",
+        "Zitai Huang",
+        "Yi Xu",
+        "Hanli Wang"
+      ],
+      "summary": "Vision-language-action (VLA) policies operate in a closed loop in real-world robot tasks: a robot observes the scene, executes an action chunk, and conditions its next decision on the resulting observation. However, most existing world models for robot action evaluation are limited to open-loop prediction along pre-collected action trajectories. This prevents them from supporting closed-loop VLA evaluation, where each action chunk must be conditioned on the observation generated by the previous execution. To address this gap, we propose PiL-World, a chunk-wise world model designed for policy-in-the-loop VLA evaluation. Given the current observation and the action trajectory rolled out by a VLA policy, PiL-World generates multi-view future observations that are consistent with the VLA rollout and match the image inputs required by the policy. By alternating between VLA inference and world-model prediction, PiL-World enables closed-loop evaluation without real robot execution at every step. To improve rollout fidelity, PiL-World conditions video generation on action-derived visual control from head-view robot motion and latent histories that encode task execution context, while jointly predicting complementary multi-view observations. Beyond successful teleoperated demonstrations, it also learns from failed execution trajectories, helping the imagined rollouts better match the distribution of real policy executions. We evaluate PiL-World on three real dual-arm manipulation tasks. PiL-World generates imagined rollouts that are highly consistent with real robot executions. More importantly, compared with the baseline, it reduces the error between VLA success rates measured in real-world rollouts and those estimated through closed-loop world-model evaluation from 63.2% to 12.0%.",
+      "published": "2026-06-04T06:57:25Z",
+      "updated": "2026-06-04T06:57:25Z",
+      "abstractUrl": "http://arxiv.org/abs/2606.05773v1",
+      "pdfUrl": "https://arxiv.org/pdf/2606.05773v1",
+      "topicId": "world-models",
+      "topicName": "世界模型",
+      "topicColor": "#6a58c8",
+      "categories": [
+        "cs.RO"
+      ],
+      "score": 15
+    },
+    {
+      "id": "http://arxiv.org/abs/2606.05699v1",
+      "arxivId": "2606.05699v1",
+      "title": "DexFuture: Hierarchical Future-State Visuomotor Targeting for Bimanual Dexterous Tool Use",
+      "authors": [
+        "Runfa Blark Li",
+        "Kuang-Ting Tu",
+        "Nikola Raicevic",
+        "Dwait Bhatt",
+        "Xinshuang Liu",
+        "Keito Suzuki",
+        "Ki Myung Brian Lee",
+        "Nikolay Atanasov",
+        "Truong Nguyen"
+      ],
+      "summary": "Bimanual dexterous tool use remains challenging for robots due to high-dimensional hand configurations and complex hand-tool-object dynamics and contact. Most existing control policies depend on future configuration references provided from demonstrations, while future action-conditioned world models require slow online planning over high-dimensional action sequences. A significant challenge is generating a dynamically consistent future reference trajectory without relying on privileged states from demonstrations or slow counterfactual planning. We propose DexFuture, a hierarchical system that couples a high-level Future-State Visuomotor Target Predictor with a low-level Target-Conditioned Structured Dexterous Policy. Conditioned on egocentric RGB, proprioceptive and geometric history, the high-level predictor constructs structured hand-tool-object visuomotor embeddings and uses a horizon-conditioned transformer to generate a multi-step future target trajectory. Then, the low-level policy tracks them with a target-conditioned per-link transformer. This hierarchy decouples coarse future reference generation from fine-grained action control, and slow long-horizon semantic prediction from high-frequency execution. On OakInk2 bimanual tool-use tasks, DexFuture achieves 90% of the privileged-oracle performance, compared to 7% for a no-reference policy. DexFuture operates at 60 Hz, approximately 250 times faster than DexWM-style Cross-Entropy Method (CEM) planning with a future action-conditioned world model.",
+      "published": "2026-06-04T04:37:23Z",
+      "updated": "2026-06-04T04:37:23Z",
+      "abstractUrl": "http://arxiv.org/abs/2606.05699v1",
+      "pdfUrl": "https://arxiv.org/pdf/2606.05699v1",
+      "topicId": "world-models",
+      "topicName": "世界模型",
+      "topicColor": "#6a58c8",
+      "categories": [
+        "cs.RO"
+      ],
+      "score": 15
+    },
+    {
+      "id": "http://arxiv.org/abs/2606.05660v1",
+      "arxivId": "2606.05660v1",
+      "title": "Safe Embodied AI for Long-horizon Tasks: A Cross-layer Analysis of Robotic Manipulation",
+      "authors": [
+        "Dabin Kim",
+        "Daemin Park",
+        "Sangyub Lee",
+        "Jinsik Kim",
+        "Yeongtak Oh",
+        "Jongho Shin",
+        "Sungroh Yoon"
+      ],
+      "summary": "Embodied AI systems are increasingly expected to reason and act over extended horizons in physical environments. This growing capability brings safety to the foreground, because failures in the physical world can harm people, damage objects, and disrupt workplaces. Although safe embodied AI has attracted substantial attention, the literature remains fragmented across planning, policy design, and runtime execution. Long-horizon robotic manipulation is a particularly revealing anchor domain for this problem because semantic misgrounding, subtask-level error propagation, execution drift, and contact-rich physical risk can accumulate within the same closed-loop system. This survey therefore provides a structured review of safety in long-horizon robotic manipulation from an embodied AI perspective. We organize the literature by intervention locus, covering planning-time, policy-time, and execution-time safety, and we analyze the strength of the evidence that each line of work provides, distinguishing formal guarantees, statistical support, and empirical safety heuristics. This framework clarifies the distinct roles of backbone capability papers, direct safety mechanisms, and benchmark or evaluation studies, while exposing where current safety claims are well supported and where they remain indirect. We identify persistent gaps, including limited evidence for policy-time safety, weak formal support for contact-rich long-horizon manipulation, immature uncertainty-triggered intervention, and a shortage of manipulation-specific safety benchmarks. We conclude by outlining research directions for cross-layer assurance, evaluation design, and safer deployment of long-horizon robotic agents in real-world settings.",
+      "published": "2026-06-04T03:43:09Z",
+      "updated": "2026-06-04T03:43:09Z",
+      "abstractUrl": "http://arxiv.org/abs/2606.05660v1",
+      "pdfUrl": "https://arxiv.org/pdf/2606.05660v1",
+      "topicId": "world-models",
+      "topicName": "世界模型",
+      "topicColor": "#6a58c8",
+      "categories": [
+        "cs.RO",
+        "cs.AI"
+      ],
+      "score": 15
+    },
+    {
+      "id": "http://arxiv.org/abs/2606.05460v1",
+      "arxivId": "2606.05460v1",
+      "title": "ORACLE-CT: Anatomy-Aware Support Pooling for CT Classification",
+      "authors": [
+        "Lavsen Dahal",
+        "Yubraj Bhandari",
+        "Geoffrey Rubin",
+        "Joseph Y. Lo"
+      ],
+      "summary": "Abdominal CT disease classification is challenging because each scan is a large 3D volume with many possible findings, while diagnostic evidence is often confined to specific organs or anatomical compartments. Most study-level classifiers aggregate encoder features using anatomy-agnostic pooling or attention, creating a mismatch between localized disease evidence and global evidence aggregation. We propose ORACLE--CT, an encoder-agnostic anatomy-aware aggregation framework that uses multi-organ segmentation to define label-specific anatomical supports and restrict attention pooling to relevant regions. The framework supports single-organ, multi-organ union, comparative, localized, and global support strategies. We evaluate ORACLE--CT with three encoder families: DINOv3, I3D--ResNet-121, and the radiology-native Pillar--0 encoder. Models are trained end-to-end on MERLIN and evaluated internally and under frozen external transfer to Duke--Abdomen and AMOS. Compared with global average pooling, support-masked pooling improved MERLIN macro-AUROC/AUPRC from 0.838/0.638 to 0.858/0.676 for DINOv3 and from 0.829/0.617 to 0.848/0.659 for I3D--ResNet-121. On harmonized 10-label external evaluation, DINOv3 improved on Duke--Abdomen from 0.802/0.628 to 0.835/0.683 and on AMOS from 0.742/0.313 to 0.762/0.350, with similar gains for I3D--ResNet-121. For Pillar--0, most gains came from learned attention, with smaller additional benefit from anatomical masking. ORACLE--CT improves discrimination and external robustness while preserving an auditable link between predictions and anatomical evidence.",
+      "published": "2026-06-03T21:37:05Z",
+      "updated": "2026-06-03T21:37:05Z",
+      "abstractUrl": "http://arxiv.org/abs/2606.05460v1",
+      "pdfUrl": "https://arxiv.org/pdf/2606.05460v1",
+      "topicId": "medical-imaging",
+      "topicName": "AI 医学影像",
+      "topicColor": "#cf3f58",
+      "categories": [
+        "cs.CV"
+      ],
+      "score": 15
+    },
+    {
+      "id": "http://arxiv.org/abs/2606.05113v1",
+      "arxivId": "2606.05113v1",
+      "title": "3D-GlioPREDICT: 3D Latent Diffusion for Post-Radiotherapy Brain MRI Prediction in Patients with Glioma",
+      "authors": [
+        "Nordin Belkacemi",
+        "Selena Huisman",
+        "Vera C. Keil",
+        "Joost J. C. Verhoeff",
+        "Szabolcs David"
+      ],
+      "summary": "Radiotherapy is a cornerstone of glioma treatment inducing complex structural changes in brain tissue that are difficult to anticipate. Predicting these changes from pretreatment data could improve understanding of treatment-related effects and support the development of image-based outcome prediction methods. Recent studies have shown that follow-up brain magnetic resonance imaging can be synthesized from baseline imaging and treatment information, but most existing approaches operate on single 2D slices and represent treatment as a global parameter, rather than a spatially dynamic variable. In this work, we address both limitations with a 3D latent diffusion framework that conditions image generation on the spatially resolved voxel-wise dose distribution, alongside a pretreatment image and follow-up time. To make volumetric synthesis computationally feasible, the model combines latent-space compression with ControlNet-based spatial conditioning. The method was trained and evaluated on a public dataset comprising 257 scans from 25 glioma patients. Prediction quality was assessed using mean squared error, peak signal-to-noise ratio, and structural similarity index. Anatomical consistency was further evaluated using Dice scores for cerebrospinal fluid, gray matter, and white matter segmentations, together with hippocampus volume prediction error and deformation analysis based on log Jacobian determinant maps. Compared with our previously proposed 2D approach, the 3D model achieved improved image similarity while maintaining good agreement with ground truth anatomy and deformation patterns. Overall, these results support the feasibility of 3D treatment-aware generative modeling for predicting post-radiotherapy brain MRI using only pretreatment information. Code is available at https://github.com/nordinbelkacemi/fu-pred-3d",
+      "published": "2026-06-03T17:19:08Z",
+      "updated": "2026-06-03T17:19:08Z",
+      "abstractUrl": "http://arxiv.org/abs/2606.05113v1",
+      "pdfUrl": "https://arxiv.org/pdf/2606.05113v1",
+      "topicId": "medical-imaging",
+      "topicName": "AI 医学影像",
+      "topicColor": "#cf3f58",
+      "categories": [
+        "eess.IV"
+      ],
+      "score": 14
+    },
+    {
+      "id": "http://arxiv.org/abs/2606.04871v1",
+      "arxivId": "2606.04871v1",
+      "title": "Recent Advances and Trends in Learning-based 3D Representations",
+      "authors": [
+        "Adrien Schockaert",
+        "Hamid Laga",
+        "Hazem Wannous",
+        "Vincent Magnier",
+        "Guillaume Dufaye",
+        "Jean-françois Witz"
+      ],
+      "summary": "The selection of an appropriate 3D representation is a fundamental design decision that dictates the efficiency, quality, and capabilities of modern computer vision and graphics pipelines for tasks such as 3D reconstruction, novel-view synthesis and rendering, shape and motion analysis, recognition, and generation. While traditional representations (\\eg meshes, point clouds, and volumetric grids) remain standard outputs of 3D sensors (\\eg LiDAR and 3D scanners) and are widely used in downstream applications (\\eg editing and simulation), recent neural and primitive-based representations (\\eg 3D Gaussian Splatting) offer compact and differentiable alternatives opening a wide range of opportunities in applications such as games, AR/VR, autonomous driving, robot navigation, and medical imaging, to name a few. The goal of this paper is to survey the main families of 3D representations from discrete explicit formats to continuous implicit fields based either on neural rendering or primitive splatting. For each type of representation, we present the general formulation and its variants, discuss its benefits and limitations, and highlight key applications. We conclude the paper by outlining the open challenges and potential directions for future research. Distinct from recent surveys that broadly cover 3D object and scene reconstruction, this paper provides a focused analysis on the evolution of 3D representations themselves. We specifically emphasize the paradigm shift toward implicit representations, offering a novel perspective on how these emerging formats fundamentally alter 3D/4D workflows.",
+      "published": "2026-06-03T13:35:50Z",
+      "updated": "2026-06-03T13:35:50Z",
+      "abstractUrl": "http://arxiv.org/abs/2606.04871v1",
+      "pdfUrl": "https://arxiv.org/pdf/2606.04871v1",
+      "topicId": "3d-reconstruction",
+      "topicName": "3D 重建",
+      "topicColor": "#0f8b8d",
+      "categories": [
+        "cs.CV"
+      ],
+      "score": 14
+    },
+    {
+      "id": "http://arxiv.org/abs/2606.06407v1",
+      "arxivId": "2606.06407v1",
+      "title": "A Vision-language Framework for Comparative Reasoning in Radiology",
+      "authors": [
+        "Tengfei Zhang",
+        "Ziheng Zhao",
+        "Lisong Dai",
+        "Xiaoman Zhang",
+        "Pengcheng Qiu",
+        "Ya Zhang",
+        "Yanfeng Wang",
+        "Weidi Xie"
+      ],
+      "summary": "Medical imaging artificial intelligence has achieved strong performance in isolated image interpretation, but remains poorly aligned with radiological practice, where diagnosis and follow-up rely on comparison across prior studies and analogous reference cases. Here we formulate radiological comparison as an entity-aware cross-image reasoning problem and introduce a framework that supports both reference-case retrieval and temporal comparative interpretation. We construct MedReCo-DB, a large-scale comparative imaging resource derived from routine image-report pairs, comprising more than 690,000 images from over 160,000 patients across eight institutions, four countries and seven imaging modalities. Reports are decomposed into anatomical structures, abnormal findings and pathological conditions to provide supervision for entity-conditioned retrieval and comparative visual question answering. Using this resource, we develop MedReCo, an entity-aware visual encoder for controllable retrieval of clinically analogous cases, and MedReCo-VLM, a vision--language extension for generative interpretation of interval change. Across internal, external and cross-center evaluations, MedReCo achieved the highest Recall@1 in all 12 internal retrieval settings and improved external retrieval by a mean of 6.0 percentage points. In clinically confusable differential groups, it consistently outperformed the strongest baselines. MedReCo-VLM achieved the best performance across all comparative generation evaluations and improved longitudinal follow-up accuracy by 14.5-46.5 percentage points on chest radiographs and 13.0-27.9 percentage points on CT. These findings suggest that entity-aware comparative reasoning can be learned from routine clinical data at scale and may provide a more clinically aligned foundation for medical imaging AI.",
+      "published": "2026-06-04T17:12:47Z",
+      "updated": "2026-06-04T17:12:47Z",
+      "abstractUrl": "http://arxiv.org/abs/2606.06407v1",
+      "pdfUrl": "https://arxiv.org/pdf/2606.06407v1",
+      "topicId": "medical-imaging",
+      "topicName": "AI 医学影像",
+      "topicColor": "#cf3f58",
+      "categories": [
+        "cs.CV",
+        "cs.IR",
+        "cs.LG",
+        "eess.IV"
+      ],
+      "score": 12
+    },
+    {
+      "id": "http://arxiv.org/abs/2606.06390v1",
+      "arxivId": "2606.06390v1",
+      "title": "HomeWorld: A Unified Floorplan-to-Furnished Framework for Generating Controllable, Densely Interactive Whole-Home Scenes",
+      "authors": [
+        "Wenbo Li",
+        "Xiaoliang Ju",
+        "Zipeng Qin",
+        "Rongyao Fang",
+        "Hongsheng Li"
+      ],
+      "summary": "Indoor scene generation is crucial for robot simulation and modern interior design. However, complex layouts together with scarce 3D scene data make learning-based generation challenging. Existing methods often rely on hand-crafted rules or focus on isolated sub-tasks (e.g., floorplan synthesis or single-room furnishing), producing whole-home scenes that lack global coherence, realism, and simulation readiness. To mitigate these limitations, we propose a unified hierarchical framework that decomposes indoor scene synthesis into controllable stages. First, we curate a large-scale dataset of 300K real residential floorplans to train a large language model for whole-home floorplan generation. With detailed descriptions and a K-D tree-based representation, our method enables fine-grained, controllable whole-home floorplan generation. Building upon the generated whole-home floorplan, we leverage image generation models to draft furniture layouts from multi-level roaming viewpoints, and then generate the layouts of small manipulable objects on different supporting surfaces (e.g., cabinets, desks, and dining tables) for embodied AI simulation. During furniture and object layout generation, a VLM-based refiner iteratively corrects furniture and object placement, and a 3D generative model enables flexible replacement of individual assets. We further attach basic physical attributes and simple surface texture and lighting setups to complete the pipeline for embodied AI use. Experiments and user studies demonstrate that our pipeline produces indoor spaces with greater layout diversity and stronger 3D design appeal, outperforming prior methods on both quantitative and qualitative metrics. Finally, alongside our generation pipeline, we will release the floorplan dataset and 5K fully furnished scenes to the community. Project Page: https://kairos-homeworld.github.io/",
+      "published": "2026-06-04T16:58:43Z",
+      "updated": "2026-06-04T16:58:43Z",
+      "abstractUrl": "http://arxiv.org/abs/2606.06390v1",
+      "pdfUrl": "https://arxiv.org/pdf/2606.06390v1",
+      "topicId": "world-models",
+      "topicName": "世界模型",
+      "topicColor": "#6a58c8",
+      "categories": [
+        "cs.CV",
+        "cs.AI"
+      ],
+      "score": 12
+    },
+    {
+      "id": "http://arxiv.org/abs/2606.06199v1",
+      "arxivId": "2606.06199v1",
+      "title": "SC-MFJ: A Simple Haptic Quality Metric for Medical Image Segmentation",
+      "authors": [
+        "Souraj Adhikary",
+        "Negar Chabi",
+        "Andre Mastmeyer"
+      ],
+      "summary": "Standard segmentation metrics such as Dice and Hausdorff distance measure geometric overlap but say nothing about whether a segmented surface is suitable for haptic rendering in surgical simulation. We propose SC-MFJ (Surface-Constrained Mean Force Jerk), a simple, inexpensive metric that samples a segmented organ surface with many short virtual stylus walks and measures how jerky the resulting contact forces are. The metric is computed from existing segmentation outputs and uses roughly one minute of CPU time per case. We evaluate three pancreas CT segmentation approaches-binary nnU-Net output, Gaussian-smoothed output, and learned signed distance function (SDF) regression-across 80 cases in five-fold cross-validation. SC-MFJ reveals a 147x gap in haptic quality between the raw binary baseline and simple Gaussian post-processing, a difference entirely invisible to Dice and HD95. It also shows that learned SDF regression, despite requiring full model retraining, produces more variable haptic quality than Gaussian smoothing, with a case-level standard deviation of 168 N/s2 compared with 22 N/s2 for Gaussian. A second evaluation on the LiTS liver dataset (131 cases) confirms the generality of these findings: the binary-to-Gaussian gap widens to 189x, and Gaussian smoothing again produces consistently low force jerk across all folds. Our results suggest that for haptic simulation applications, a one-line post-processing step may be sufficient, and that a cheap metric like SC-MFJ can flag problems that geometric metrics miss.",
+      "published": "2026-06-04T14:04:42Z",
+      "updated": "2026-06-04T14:04:42Z",
+      "abstractUrl": "http://arxiv.org/abs/2606.06199v1",
+      "pdfUrl": "https://arxiv.org/pdf/2606.06199v1",
+      "topicId": "medical-imaging",
+      "topicName": "AI 医学影像",
+      "topicColor": "#cf3f58",
+      "categories": [
+        "cs.CV",
+        "cs.GR"
+      ],
+      "score": 12
+    },
+    {
+      "id": "http://arxiv.org/abs/2606.06147v1",
+      "arxivId": "2606.06147v1",
+      "title": "WorldFly: A World-Model-Based Vision-Language-Action Model for UAV Navigation",
+      "authors": [
+        "Shengtao Zheng",
+        "Kai Li",
+        "Weichen Zhang",
+        "Yu Meng",
+        "Chen Gao",
+        "Xinlei Chen",
+        "Yong Li",
+        "Xiao-Ping Zhang"
+      ],
+      "summary": "End-to-end Vision-Language-Action (VLA) models have shown promise in UAV navigation. However, existing approaches typically rely on historical observations to directly predict actions, often struggling in dense urban environments where severe occlusions and sharp turns result in drastic viewpoint transitions. We argue that the ability to \"imagine\" future states -- inherent in World Models -- is critical for robust decision-making under such partial observability. To address this, we construct a challenging Urban Canyon Traversal Benchmark, specifically designed to evaluate spatial understanding in scenarios characterized by severe occlusions and drastic viewpoint transitions. To this end, we propose WorldFly, a novel world-model-based VLA framework that employs a dual-branch coupled flow matching mechanism to jointly generate future video predictions and navigation actions, thereby explicitly guiding the agent's policy via spatial imagination. Extensive evaluations on our benchmark demonstrate that WorldFly outperforms other baselines, particularly in unseen environments, validating the effectiveness of integrating world models into embodied aerial agents.",
+      "published": "2026-06-04T13:23:05Z",
+      "updated": "2026-06-04T13:23:05Z",
+      "abstractUrl": "http://arxiv.org/abs/2606.06147v1",
+      "pdfUrl": "https://arxiv.org/pdf/2606.06147v1",
+      "topicId": "world-models",
+      "topicName": "世界模型",
+      "topicColor": "#6a58c8",
+      "categories": [
+        "cs.AI"
+      ],
+      "score": 12
+    },
+    {
+      "id": "http://arxiv.org/abs/2606.06103v1",
+      "arxivId": "2606.06103v1",
+      "title": "MS-DKC: A Dataset Knowledge Card Framework for Designing and Adapting Medical Image Segmentation Models",
+      "authors": [
+        "Tariq M. Khan",
+        "Syed Saud Naqvi",
+        "Thantrira Porntaveetus",
+        "Hamid Alinejad-Rokny",
+        "Shahzaib Iqbal",
+        "Imran Razzak",
+        "Mohammad AU Khan"
+      ],
+      "summary": "Medical image segmentation is often framed as a search for stronger architectures, but this can obscure a more fundamental question: what does the dataset require from the model? In medical imaging, this requirement is shaped by foreground occupancy, morphology, boundary ambiguity, topology sensitivity, annotation quality, acquisition variation, and operating point. This paper introduces the Medical Segmentation Dataset Knowledge Card (MS-DKC), a framework for making these factors explicit. MS-DKC records dataset evidence through image/acquisition, morphology, supervision, context-dependence, and deployment-risk descriptors. These descriptors are mapped to failure modes, design priors, and risk-aligned criteria, making segmentation design more traceable than architecture-first comparison. We evaluate MS-DKC on DRIVE, ISIC2018, and ACDC, representing distinct regimes. DRIVE contains sparse, thin, branching vessels, favoring detail-preserving models, sensitivity-aware optimization, threshold analysis, and topology-aware metrics. DKC-TNet-v2 achieved Dice 0.8044 and IoU 0.6730 with 35103 parameters, while SA-UNetv2-DKC-AmbRef reached Dice 0.8141, IoU 0.6865, sensitivity 0.8265, specificity 0.9804, and AUC 0.9853. ISIC2018 involves compact but appearance-variable lesions; validation-constrained score-function selection on Att-Next-Topo/ATTNext produced MS-DKC-AttNextTopo-VCSF-NoAug with Dice 0.8872, IoU 0.8214, precision 0.9173, Boundary F1 0.4878, and ASSD 4.13, while plausible additions failed to improve the risk-aligned profile. ACDC provides a multi-class cardiac case, where MS-DKC recommends four-class softmax segmentation, class-balanced Dice/CE supervision, and class-wise surface evaluation. Overall, the results support dataset-conditioned design: different datasets require different priors, operating points, and evidence before a model can be judged appropriate.",
+      "published": "2026-06-04T12:45:42Z",
+      "updated": "2026-06-04T12:45:42Z",
+      "abstractUrl": "http://arxiv.org/abs/2606.06103v1",
+      "pdfUrl": "https://arxiv.org/pdf/2606.06103v1",
+      "topicId": "medical-imaging",
+      "topicName": "AI 医学影像",
+      "topicColor": "#cf3f58",
+      "categories": [
+        "cs.CV"
+      ],
+      "score": 12
+    },
+    {
+      "id": "http://arxiv.org/abs/2606.06042v1",
+      "arxivId": "2606.06042v1",
+      "title": "LoomVideo: Unifying Multimodal Inputs into Video Generation and Editing",
+      "authors": [
+        "Jianzong Wu",
+        "Hao Lian",
+        "Jiongfan Yang",
+        "Dachao Hao",
+        "Ye Tian",
+        "Yunhai Tong",
+        "Jingyuan Zhu",
+        "Biaolong Chen",
+        "Qiaosong Qi",
+        "Aixi Zhang",
+        "Wanggui He",
+        "Mushui Liu",
+        "Jinlong Liu",
+        "Hao Jiang"
+      ],
+      "summary": "Developing unified video generation and editing models capable of interpreting interleaved multimodal inputs is a promising yet challenging frontier field. Existing unified frameworks predominantly rely on massive models (typically 13B parameters or more) and incorporate source video conditions for editing by concatenating sequence tokens. This concatenation inevitably doubles the sequence length, quadrupling the computational complexity of the self-attention mechanism and introducing prohibitive overhead. To address these bottlenecks, we present LoomVideo, a highly efficient 5B-parameter unified architecture for both video generation and editing. LoomVideo replaces the standard text encoder with a Multimodal Large Language Model (MLLM) and employs Deepstack injection mechanism to align multi-layer MLLM features with the Diffusion Transformer (DiT). Crucially, we introduce a zero-overhead Scale-and-Add conditioning approach for video editing. By scaling and directly adding the clean source video latent to the noised target latent, this elegant design eliminates the need for token concatenation, drastically reducing computational cost while maintaining robust capabilities for complex, non-rigid edits. Furthermore, a Negative Temporal RoPE strategy is seamlessly integrated to handle multiple reference images. Extensive experiments demonstrate that our compact 5B model achieves state-of-the-art or highly competitive performance across comprehensive benchmarks, exhibiting exceptional superiority in e-commerce and fashion generation scenarios. Benefiting from the zero-overhead conditioning mechanism, LoomVideo achieves at least a 5.41x acceleration in inference speed compared to models of similar capabilities, paving the way for highly practical and efficient video foundation models.",
+      "published": "2026-06-04T11:35:26Z",
+      "updated": "2026-06-04T11:35:26Z",
+      "abstractUrl": "http://arxiv.org/abs/2606.06042v1",
+      "pdfUrl": "https://arxiv.org/pdf/2606.06042v1",
+      "topicId": "world-models",
+      "topicName": "世界模型",
+      "topicColor": "#6a58c8",
+      "categories": [
+        "cs.CV"
+      ],
+      "score": 12
+    },
+    {
+      "id": "http://arxiv.org/abs/2606.05979v1",
+      "arxivId": "2606.05979v1",
+      "title": "World-Language-Action Model for Unified World Modeling, Language Reasoning, and Action Synthesis",
+      "authors": [
+        "Yi Yang",
+        "Zhihong Liu",
+        "Siqi Kou",
+        "Yiyang Chen",
+        "Yanzhe Hu",
+        "Jianbo Zhou",
+        "Boyuan Zhao",
+        "Zhijie Wei",
+        "Xiao Xia",
+        "Xueqi Li",
+        "Pengfei Liu",
+        "Zhijie Deng"
+      ],
+      "summary": "We propose world-language-action (WLA) models as a new class of embodied foundation models. WLA takes textual instructions, images, and robot states as inputs to jointly predict textual subtasks, subgoal images, and robot actions, conjoining the \\emph{world modeling interface} to learn from extensive egocentric videos as in the world-action model (WAM) and the \\emph{language reasoning} capacities to solve complex long-horizon tasks as in vision-language-action (VLA) models. At the core of WLA lies an \\emph{autoregressive (AR)} Transformer backbone, instead of a bidirectional diffusion Transformer as in WAMs, to predict the \\emph{next state}, comprising the \\emph{semantic-level} textual intention and complementary \\emph{fine-grained} physical dynamics. The physical dynamics are supervised by the world modeling objective based on a dedicated World Expert, and are leveraged to ease the characterization of the state-action correlation for the Action Expert. WLA leverages meta-queries to make the world prediction \\emph{implicitly} impact the action generation so that the former can be disabled during inference. The world prediction can also be activated to enable test-time scaling for improved robot control. Our WLA-0 prototype, with 2B active parameters, achieves 40 ms per inference on an NVIDIA RTX 5090. Evaluations across simulated and real-world environments demonstrate that WLA-0 achieves state-of-the-art multi-task and long-horizon learning abilities, e.g., 92.94\\% success rate on RoboTwin2.0 Clean and 56.5\\% success rate on RMBench. WLA-0 also holds the promise to learn novel tasks directly from \\emph{cross-embodiment robot videos} without action annotations.",
+      "published": "2026-06-04T10:23:01Z",
+      "updated": "2026-06-04T10:23:01Z",
+      "abstractUrl": "http://arxiv.org/abs/2606.05979v1",
+      "pdfUrl": "https://arxiv.org/pdf/2606.05979v1",
+      "topicId": "world-models",
+      "topicName": "世界模型",
+      "topicColor": "#6a58c8",
+      "categories": [
+        "cs.RO",
+        "cs.AI"
+      ],
+      "score": 12
+    },
+    {
+      "id": "http://arxiv.org/abs/2606.05645v1",
+      "arxivId": "2606.05645v1",
+      "title": "Discrete-WAM: Unified Discrete Vision-Action Token Editing for World-Policy Learning",
+      "authors": [
+        "Ziyang Yao",
+        "Haochen Liu",
+        "Yuncheng Jiang",
+        "Zeyu Zhu",
+        "Zibin Guo",
+        "Jingru Wang",
+        "Tianle Liu",
+        "Jianwei Cui",
+        "Kuiyuan Yang",
+        "Hongwei Xie",
+        "Jingwei Zhao",
+        "Guang Chen",
+        "Hangjun Ye"
+      ],
+      "summary": "Autonomous driving requires reasoning about how ego actions shape the evolution of the surrounding world. However, most end-to-end methods rely on direct state-to-action mappings, capturing correlations without explicitly modeling action-conditioned dynamics. Conversely, continuous-latent world models often lack compositional structure for causal reasoning across counterfactual futures. We introduce Discrete-WAM, a unified latent vision-action world policy that represents future visual states and ego actions as aligned discrete tokens, enabling compositional causal reasoning across alternative futures. Built upon this unified discrete alignment, Discrete-WAM establishes a shared discrete diffusion framework with unified generative tasks, jointly formulating world modeling, world-action policy, and hierarchical decision-enabled policy, supporting compositional generalization across diverse driving scenarios. Experiments on large-scale autonomous-driving benchmarks show that Discrete-WAM achieves competitive performance while supporting controllable generation and counterfactual reasoning, offering a principled path toward more reliable decision-making.",
+      "published": "2026-06-04T03:16:31Z",
+      "updated": "2026-06-04T03:16:31Z",
+      "abstractUrl": "http://arxiv.org/abs/2606.05645v1",
+      "pdfUrl": "https://arxiv.org/pdf/2606.05645v1",
+      "topicId": "world-models",
+      "topicName": "世界模型",
+      "topicColor": "#6a58c8",
+      "categories": [
+        "cs.RO"
+      ],
+      "score": 12
+    },
+    {
+      "id": "http://arxiv.org/abs/2606.05558v1",
+      "arxivId": "2606.05558v1",
+      "title": "Autoregressive Diffusion World Models for Off-Policy Evaluation of LLM Agents",
+      "authors": [
+        "Kaixuan Liu",
+        "Guojun Xiong",
+        "Weinan Zhang",
+        "Shengpu Tang"
+      ],
+      "summary": "Evaluating large language model (LLM) agents in multi-turn interactive environments is expensive and risky, as it requires online environment interaction. We propose ADWM (Autoregressive Diffusion World Model), an evaluation framework that estimates the performance of a new LLM agent policy purely from pre-collected trajectories. The core idea is to learn a latent diffusion world model that simulates how the environment responds to the evaluation policy, without ever executing it in the real environment. Existing diffusion-based OPE methods guide full trajectories in a single pass by jointly diffusing states and actions, an assumption that breaks down for LLM agents whose actions are discrete text that must be sampled from the policy after observing the environment. Unlike autoregressive world models that suffer from compounding errors, ADWM models each transition as an independent denoising process, enabling reliable step-by-step rollouts where the world model and agent alternate in causal order. Crucially, the LLM agent under evaluation directly guides the diffusion generation at each step via a policy-conditioned score function, ensuring that simulated trajectories accurately reflect its decision-making patterns. Empirically, ADWM achieves accurate value estimates and evaluation reliability across diverse multi-turn agent tasks, demonstrating its promise as a practical framework for offline LLM agent evaluation.",
+      "published": "2026-06-04T01:13:24Z",
+      "updated": "2026-06-04T01:13:24Z",
+      "abstractUrl": "http://arxiv.org/abs/2606.05558v1",
+      "pdfUrl": "https://arxiv.org/pdf/2606.05558v1",
+      "topicId": "world-models",
+      "topicName": "世界模型",
+      "topicColor": "#6a58c8",
+      "categories": [
+        "cs.LG"
+      ],
+      "score": 12
+    },
+    {
+      "id": "http://arxiv.org/abs/2606.05555v1",
+      "arxivId": "2606.05555v1",
+      "title": "Representation Learning Enables Scalable Multitask Deep Reinforcement Learning",
+      "authors": [
+        "Johan Obando-Ceron",
+        "Lu Li",
+        "Scott Fujimoto",
+        "Pierre-Luc Bacon",
+        "Aaron Courville",
+        "Pablo Samuel Castro"
+      ],
+      "summary": "Scaling reinforcement learning (RL) to diverse multitask settings remains a central challenge. While recent advances in model-based RL achieve strong performance, they rely on planning and complex training pipelines, making it unclear which components are essential for scalability. We revisit this question and argue that the primary driver of scalable multitask RL is not model-based control, but \\emph{representation learning}. In particular, we show that combining predictive, model-based representations with high-capacity value function approximation is sufficient to achieve strong performance, even without planning. We evaluate a simple model-free algorithm, MR.Q, coupled with auxiliary predictive objectives into a scalable actor-critic architecture. This approach outperforms a recent world-model-based method and a range of deep RL baselines across a diverse suite of multitask continuous control tasks, while significantly reducing computational overhead and improving wall-clock efficiency. We observe consistent improvements with increased model capacity and show through ablations that predictive representation learning is critical for performance.",
+      "published": "2026-06-04T01:09:20Z",
+      "updated": "2026-06-04T01:09:20Z",
+      "abstractUrl": "http://arxiv.org/abs/2606.05555v1",
+      "pdfUrl": "https://arxiv.org/pdf/2606.05555v1",
+      "topicId": "world-models",
+      "topicName": "世界模型",
+      "topicColor": "#6a58c8",
+      "categories": [
+        "cs.LG",
+        "cs.AI"
+      ],
+      "score": 12
+    },
+    {
+      "id": "http://arxiv.org/abs/2606.05107v1",
+      "arxivId": "2606.05107v1",
+      "title": "Who Needs Labels? Adapting Vision Foundation Models With the Metadata You Already Have",
+      "authors": [
+        "Elouan Gardès",
+        "Seung Eun Yi",
+        "Kartik Ahuja",
+        "Théo Moutakanni",
+        "Huy V. Vo",
+        "Piotr Bojanowski",
+        "Wolfgang M. Pernice",
+        "Loïc Landrieu",
+        "Camille Couprie"
+      ],
+      "summary": "We propose a label-free approach to adapt powerful but generic vision foundation models to specialized scientific domains. Standard supervised fine-tuning is often ill-suited to these settings: labels are scarce, and task-specific training can collapse the model's generality and hurt robustness. We instead leverage metadata to adapt representations to new domains in a self-supervised manner. Our method, FINO, combines a standard self-supervised objective with flexible metadata guidance that handles both highly granular discrete metadata and continuous metadata. It encourages the representation to preserve informative factors while suppressing spurious ones. Across subcellular fluorescence microscopy, Earth observation, wildlife monitoring, and medical imaging, FINO consistently outperforms standard unsupervised domain adaptation and fully supervised adaptation. It also exceeds highly-specialized domain-specific state of the art, while using no task labels for backbone adaptation and only lightweight probes for supervision.",
+      "published": "2026-06-03T17:10:11Z",
+      "updated": "2026-06-03T17:10:11Z",
+      "abstractUrl": "http://arxiv.org/abs/2606.05107v1",
+      "pdfUrl": "https://arxiv.org/pdf/2606.05107v1",
+      "topicId": "medical-imaging",
+      "topicName": "AI 医学影像",
+      "topicColor": "#cf3f58",
+      "categories": [
+        "cs.CV",
+        "cs.AI"
+      ],
+      "score": 11
+    },
+    {
+      "id": "http://arxiv.org/abs/2606.05102v1",
+      "arxivId": "2606.05102v1",
+      "title": "ZipSplat: Fewer Gaussians, Better Splats",
+      "authors": [
+        "Alexander Veicht",
+        "Sunghwan Hong",
+        "Dániel Baráth",
+        "Marc Pollefeys"
+      ],
+      "summary": "Feed-forward 3D Gaussian Splatting methods reconstruct a scene from posed or pose-free images in a single forward pass, yet current approaches predict one Gaussian per input pixel, tying the representation budget to camera resolution rather than scene complexity. A flat wall and a richly textured object thus produce equally many Gaussians despite very different geometric needs. We propose ZipSplat, a token-based feed-forward model that decouples Gaussian placement from the pixel grid. A multi-view backbone extracts dense visual tokens, and k-means clustering compresses them into a compact set of scene tokens. Cross- and self-attention refine these tokens, and a lightweight MLP decodes each into a group of Gaussians with unconstrained 3D positions. Because clustering is applied at inference, a single trained model spans the quality-efficiency curve without retraining. ZipSplat operates without ground-truth poses or intrinsics, yet sets a new state of the art on DL3DV and RealEstate10K with ${\\sim}6{\\times}$ fewer Gaussians than pixel-aligned methods, surpassing the best pose-free baseline by 2.1dB and 1.2dB PSNR, respectively. It further generalizes zero-shot to Mip-NeRF360 and ScanNet++, outperforming all comparable baselines. Our project page is at ${\\href{https://veichta.com/zipsplat}{https://veichta.com/zipsplat}}$.",
+      "published": "2026-06-03T17:04:30Z",
+      "updated": "2026-06-03T17:04:30Z",
+      "abstractUrl": "http://arxiv.org/abs/2606.05102v1",
+      "pdfUrl": "https://arxiv.org/pdf/2606.05102v1",
+      "topicId": "3d-reconstruction",
+      "topicName": "3D 重建",
+      "topicColor": "#0f8b8d",
+      "categories": [
+        "cs.CV"
+      ],
+      "score": 11
+    },
+    {
+      "id": "http://arxiv.org/abs/2606.04911v1",
+      "arxivId": "2606.04911v1",
+      "title": "BreastGPT: A Multimodal Large Language Model for the Full Spectrum of Breast Cancer Clinical Routine",
+      "authors": [
+        "Yang Liu",
+        "Jiajin Zhang",
+        "Danyang Tu",
+        "Yaojun Hu",
+        "Jiao Qu",
+        "Jiuyu Zhang",
+        "Yu Shi",
+        "Wei Fang",
+        "Shi Gu",
+        "Ling Zhang",
+        "Yingda Xia"
+      ],
+      "summary": "Breast cancer remains a leading cause of cancer-related mortality among women. Its clinical management requires multimodal reasoning across a clinical workflow that spans \\textit{screening}, \\textit{diagnosis} and \\textit{treatment planning}, where each stage involves distinct imaging modalities, task objectives, and reasoning patterns. However, constrained by data scarcity and model versatility, existing medical MLLMs are typically evaluated on isolated modalities or narrow task families, limiting their ability to support workflow-level clinical reasoning. In this work, we first introduce \\textbf{BreastStage}, a workflow-aligned breast imaging instruction corpus comprising 1.86M instruction-following pairs curated from 17 sub-datasets across 5 imaging modalities and 136 task templates. Its held-out split, \\textbf{BreastStage-Bench}, provides a comprehensive benchmark for evaluating multimodal reasoning across the breast cancer care continuum. Building on this corpus, we propose \\textbf{BreastGPT}, a unified MLLM equipped with a dual-branch visual encoder and concept-preserving token compression to bridge the scale gap between standard radiology and gigapixel pathology. On BreastStage-Bench, BreastGPT achieves 75.66\\% closed-ended accuracy and 89.92\\% open-ended score, outperforming both general-purpose and medical-specific MLLMs across clinical stages and task formats. These results suggest that workflow-aligned data and cross-scale visual modeling are critical for clinically grounded medical MLLMs. All data, code, and model checkpoints are released at https://yangyy-liu.github.io/BreastGPT.io.",
+      "published": "2026-06-03T14:06:52Z",
+      "updated": "2026-06-03T14:06:52Z",
+      "abstractUrl": "http://arxiv.org/abs/2606.04911v1",
+      "pdfUrl": "https://arxiv.org/pdf/2606.04911v1",
+      "topicId": "medical-imaging",
+      "topicName": "AI 医学影像",
+      "topicColor": "#cf3f58",
+      "categories": [
+        "cs.CV",
+        "cs.CL"
+      ],
+      "score": 11
+    },
+    {
+      "id": "http://arxiv.org/abs/2606.06476v1",
+      "arxivId": "2606.06476v1",
+      "title": "Thinking with Imagination: Agentic Visual Spatial Reasoning with World Simulators",
+      "authors": [
+        "Chenming Zhu",
+        "Jingli Lin",
+        "Yilin Long",
+        "Peizhou Cao",
+        "Tai Wang",
+        "Jiangmiao Pang",
+        "Xihui Liu"
+      ],
+      "summary": "While Vision-Language Models (VLMs) have shown strong visual reasoning capabilities, their spatial reasoning abilities remain largely constrained to the observed images and text-oriented chain-of-thought. They often struggle to infer unobserved layouts, maintain cross-view consistency, and reason from alternative viewpoints when only limited egocentric observations are available. In this work, we study this problem as thinking with imagination, where a VLM actively acquires imagined visual evidence by interacting with a world simulator during reasoning. We propose Astra, an agentic spatial reasoning framework that empowers VLMs with action-conditioned visual imagination. Specifically, Astra couples Astra-VL, an RL-trained VLM policy, with Astra-WM, a Bagel-based world simulator that generates novel-view observations from context images and natural-language camera motions. To provide reliable imagined evidence, Astra-WM is trained with view consistency tuning to improve pose and content consistency across views. In the RL stage, we propose a world-simulator-in-the-loop two-phase RL curriculum to stabilize tool-use exploration and advance the model's ability to invoke the simulator only when imagined observations improve over direct answering. Experiments demonstrate that both the world simulator and the agentic policy are necessary: Astra-WM improves simulator-augmented Gemini-3-Flash on MMSI-Bench from 45.1 to 49.5, while Astra-VL improves the Qwen3-VL backbone from 29.8 to 38.8 on MMSI-Bench and from 36.8 to 42.7 on MindCube. These results show that imagined observations can provide useful spatial evidence, but effective world-model-augmented reasoning requires learning when, where, and how to imagine.",
+      "published": "2026-06-04T17:56:36Z",
+      "updated": "2026-06-04T17:56:36Z",
+      "abstractUrl": "http://arxiv.org/abs/2606.06476v1",
+      "pdfUrl": "https://arxiv.org/pdf/2606.06476v1",
+      "topicId": "world-models",
+      "topicName": "世界模型",
+      "topicColor": "#6a58c8",
+      "categories": [
+        "cs.CV"
+      ],
+      "score": 9
+    },
+    {
+      "id": "http://arxiv.org/abs/2606.06379v1",
+      "arxivId": "2606.06379v1",
+      "title": "EasyLens: A Training-Free Plug-and-Play Subtle-Lesion Representation Amplifier for Medical Vision-Language Models",
+      "authors": [
+        "Qiwei Zeng",
+        "Hao Wang",
+        "Jinghao Lin",
+        "Shuchang Ye",
+        "Yuezhe Yang",
+        "Yige Peng",
+        "Haoyuan Che",
+        "Jinman Kim",
+        "Lei Bi"
+      ],
+      "summary": "Medical vision-language models (VLMs) have shown increasing potential for clinical image interpretation, including lesion detection and report generation. However, their practical utility remains limited by insufficient sensitivity to subtle lesions, whose visual evidence is often sparse, low-contrast, and embedded within complex anatomical context. As local visual tokens are aggregated, these weak lesion cues can become underrepresented in global image representations, making them difficult for medical VLMs to recognize. Existing efforts to improve lesion sensitivity mainly rely on medical-domain vision-encoder pre-training, clinical-term-guided alignment, or trainable pathological representation enhancement. Although effective, these approaches usually require additional training or model-specific adaptation and may overfit to particular disease morphologies, limiting their applicability to frozen medical VLMs. To address these limitations, we propose EasyLens, a training-free plug-and-play subtle-lesion representation amplifier for medical VLMs. EasyLens first constructs EasyBank, a pathology-anatomy prototype space that provides lesion-related prototypes and anatomy-aware normal references for comparing suspicious patches against both pathological and normal anatomical patterns. To avoid blindly amplifying normal tissues, EasyTag selects lesion-relevant patches through counterfactual prototype reasoning. To counteract the dilution of subtle lesion cues in global image representations, EasyAmplifier strengthens the selected lesion-relevant patch representations through morphology-guided residual enhancement, thereby increasing their contribution to the global image embedding. Experiments on multiple medical image datasets and frozen medical VLM backbones show that EasyLens improves subtle-lesion detection and outperforms existing encoder-enhancement baselines.",
+      "published": "2026-06-04T16:47:33Z",
+      "updated": "2026-06-04T16:47:33Z",
+      "abstractUrl": "http://arxiv.org/abs/2606.06379v1",
+      "pdfUrl": "https://arxiv.org/pdf/2606.06379v1",
+      "topicId": "medical-imaging",
+      "topicName": "AI 医学影像",
+      "topicColor": "#cf3f58",
+      "categories": [
+        "cs.CV",
+        "cs.AI"
+      ],
+      "score": 9
+    },
+    {
+      "id": "http://arxiv.org/abs/2606.06309v1",
+      "arxivId": "2606.06309v1",
+      "title": "RhymeFlow: Training-Free Acceleration for Video Generation with Asynchronous Denoising Flow Scheduling",
+      "authors": [
+        "Chensheng Dai",
+        "Shengjun Zhang",
+        "Yifan Li",
+        "Zhang Zhang",
+        "Zheng Zhu",
+        "Yueqi Duan"
+      ],
+      "summary": "Video generation models based on Diffusion Transformers (DiTs) have achieved remarkable performance in video synthesis, yet they suffer from high inference latency and computational costs due to the quadratic complexity of 3D attention. Existing acceleration methods primarily reduce computational complexity within each individual denoising steps through techniques such as sparse attention and KV-caching. However, they rigidly adhere to the inherent constraint of the standard diffusion pipeline: every frame in the target video sequence must be subjected to a complete, dense denoising process across all diffusion timesteps. We observe that due to the corresponding contents and motions among adjacent frames, when keyframes with critical semantic transitions are anchored, the intermediate states of others often follow more predictable trajectories, which indicates that such uniform, dense denoising process is inherently redundant for natural video data. To this end, we introduce \\textbf{RhymeFlow}, a training-free framework that decouples the denoising trajectories of different frames. Specifically, we first identify a sparse set of pivotal key frames that dominate the latent semantic evolution. Then, only these keyframes undergo dense, step-by-step denoising to ensure structural integrity, while non-keyframes progressively skip denoising steps to minimize computational cost. Since skipped intermediate states of non-keyframes break the temporal coherence in keyframe denoising steps, leading to visual degradation, we further introduce a latent trajectory projection module, which enables keyframes to interact with a complete and temporally consistent sequence representation. Extensive experiments on current DiT-based video generation models demonstrate our method outperforms existing baselines with higher inference speed and better visual quality.",
+      "published": "2026-06-04T15:49:37Z",
+      "updated": "2026-06-04T15:49:37Z",
+      "abstractUrl": "http://arxiv.org/abs/2606.06309v1",
+      "pdfUrl": "https://arxiv.org/pdf/2606.06309v1",
+      "topicId": "world-models",
+      "topicName": "世界模型",
+      "topicColor": "#6a58c8",
+      "categories": [
+        "cs.CV"
+      ],
+      "score": 9
+    },
+    {
+      "id": "http://arxiv.org/abs/2606.06255v1",
+      "arxivId": "2606.06255v1",
+      "title": "RadiusFPS: Efficient Farthest Point Sampling on CPUs and GPUs via Spherical Voxel Pruning",
+      "authors": [
+        "Ziyang Yu",
+        "Xiang Li",
+        "Qiong Chang",
+        "Jun Miyazaki"
+      ],
+      "summary": "Point clouds are a primary sensory representation for robotic perception, underpinning LiDAR-based autonomous driving, simultaneous localization and mapping (SLAM), and navigation. Within these pipelines, Farthest Point Sampling (FPS) is the most well-known downsampling operator, as its uniform coverage preserves the geometric structure on which downstream perception relies. However, the large time complexity of classical FPS scales poorly with the million-point-per-second rates of modern 3D sensors, making it a dominant latency bottleneck that conflicts with the real-time and limited onboard compute budgets of robotic systems. Therefore, we propose RadiusFPS, an FPS acceleration framework based on spherical voxel pruning that preserves the standard FPS update rule under the same initialization and tie-breaking policy. By indexing the point cloud with spherical voxels, RadiusFPS derives a conservative geometric bound that prunes redundant distance computations in each iteration, complemented by a coordinate-wise point-skip test that removes residual updates. We further introduce RadiusFPS-G, a warp-level GPU implementation that fuses voxel selection, pruning, and distance update into memory-coalesced kernels, eliminating costly global-memory round-trips. On indoor (S3DIS, ScanNet) and outdoor LiDAR (SemanticKITTI) benchmarks, RadiusFPS-G attains up to 2.5x speedup over GPU-based FPS and matches or exceeds QuickFPS among the evaluated methods while using roughly half its GPU memory, with comparable segmentation accuracy. When coupled with the learning-based FastPoint sampler, the resulting pipeline achieves the fastest End-to-End inference among all evaluated configurations. These properties make high-quality FPS-style sampling practical for latency- and memory-constrained robotic vision.",
+      "published": "2026-06-04T14:57:05Z",
+      "updated": "2026-06-04T14:57:05Z",
+      "abstractUrl": "http://arxiv.org/abs/2606.06255v1",
+      "pdfUrl": "https://arxiv.org/pdf/2606.06255v1",
+      "topicId": "3d-reconstruction",
+      "topicName": "3D 重建",
+      "topicColor": "#0f8b8d",
+      "categories": [
+        "cs.RO",
+        "cs.CV",
+        "cs.DC"
+      ],
+      "score": 9
+    },
+    {
+      "id": "http://arxiv.org/abs/2606.06250v1",
+      "arxivId": "2606.06250v1",
+      "title": "Breaking Time: A Fully Gaussian Framework for Distributed and Continuous-Time SLAM",
+      "authors": [
+        "Davide Ceriola",
+        "Simone Ferrari",
+        "Luca Di Giammarino",
+        "Leonardo Brizi",
+        "Giorgio Grisetti"
+      ],
+      "summary": "Continuous-time SLAM provides a principled framework for fusing heterogeneous sensors while estimating smooth trajectories, and is particularly well-suited for handling heterogeneous, asynchronous sensor streams with non-uniform readout patterns, such as rolling shutter cameras, LiDAR scanners, radar sweeps, or event-based sensors. In this work, we introduce G-solver, a fully Gaussian and distributed framework that combines Gaussian Belief Propagation (GBP) with Gaussian Process (GP) motion priors for continuous-time trajectory estimation. Our GP model provides a probabilistic representation of the trajectory, enabling consistent interpolation and the use of data-driven hyperparameters, while GBP offers a scalable message-passing formulation well-suited for decentralized settings. The resulting solver naturally extends to multi-camera scenarios without specialized synchronization or engineering effort. We evaluate the approach on synthetic and real data, including rolling shutter and distributed multi-camera optimization, demonstrating accurate and stable estimation with runtimes comparable to existing continuous-time methods. An open-source implementation is released.",
+      "published": "2026-06-04T14:52:25Z",
+      "updated": "2026-06-04T14:52:25Z",
+      "abstractUrl": "http://arxiv.org/abs/2606.06250v1",
+      "pdfUrl": "https://arxiv.org/pdf/2606.06250v1",
+      "topicId": "3d-reconstruction",
+      "topicName": "3D 重建",
+      "topicColor": "#0f8b8d",
+      "categories": [
+        "cs.RO"
+      ],
+      "score": 9
+    },
+    {
+      "id": "http://arxiv.org/abs/2606.06245v1",
+      "arxivId": "2606.06245v1",
+      "title": "MPCoT: Reward-Guided Multi-Path Latent Reasoning for Test-Time Scalable Vision-Language-Action",
+      "authors": [
+        "Boyang Zhang",
+        "Lianlei Shan"
+      ],
+      "summary": "Vision-Language-Action (VLA) policies remain brittle in long-horizon and high-uncertainty control, where one-pass action decoding provides limited inference-time deliberation. Explicit chain-of-thought can increase reasoning depth, but introduces token latency and an indirect text-to-action interface. We propose MPCoT, a reward-guided multi-path latent reasoning framework that initializes $M$ hypotheses, refines them for K weight-tied steps, and softly aggregates them before action decoding. A training-only path-preference objective evaluates candidate action branches with expert-action consistency, world-model/VLM-based progress, and success feedback to align the latent path scorer with downstream execution quality. MPCoT preserves the original 8-step action interface, generates zero reasoning tokens, and exposes configurable inference controls (K,M). Under matched protocols on LIBERO and CALVIN, MPCoT improves long-horizon performance, with ablations confirming depth-width effects, confidence-weighted aggregation, and reward-guided path supervision.",
+      "published": "2026-06-04T14:48:44Z",
+      "updated": "2026-06-04T14:48:44Z",
+      "abstractUrl": "http://arxiv.org/abs/2606.06245v1",
+      "pdfUrl": "https://arxiv.org/pdf/2606.06245v1",
+      "topicId": "world-models",
+      "topicName": "世界模型",
+      "topicColor": "#6a58c8",
+      "categories": [
+        "cs.RO",
+        "cs.AI"
+      ],
+      "score": 9
+    },
+    {
+      "id": "http://arxiv.org/abs/2606.06236v1",
+      "arxivId": "2606.06236v1",
+      "title": "Tracing the Oracle: Improving Diffusion Timestep Scheduling for 3D CT Reconstruction",
+      "authors": [
+        "Yujia Wu",
+        "Zhaoqiang Liu"
+      ],
+      "summary": "Pretrained diffusion models demonstrate impressive potential in solving highly ill-posed 3D computed tomography (CT) inverse problems, while the inference process suffers from significant computational overhead. Furthermore, existing uniform timestep schedules fail to capture the non-uniform evolution of the reverse conditional diffusion stochastic differential equation, thereby introducing substantial truncation errors. To overcome this limitation, we propose Tracing the Oracle (TrO), a plug-and-play framework for improved timestep scheduling. Specifically, we treat densely sampled numerical integration trajectories on a few samples as the reference oracle. The optimized schedule is extracted by leveraging dynamic programming to globally minimize the cumulative error between the few-step approximation and the oracle. This mechanism precisely allocates the limited sampling steps to critical evolution stages that are highly susceptible to truncation errors. Our extensive experiments on the AAPM dataset across multiple 3D CT reconstruction tasks demonstrate that, when combined with the state-of-the-art 3D CT reconstruction method DDS, our optimized timesteps significantly improve reconstruction fidelity and computational efficiency compared to existing heuristic schedules, especially under a strict budget of no more than 10 sampling steps.",
+      "published": "2026-06-04T14:41:26Z",
+      "updated": "2026-06-04T14:41:26Z",
+      "abstractUrl": "http://arxiv.org/abs/2606.06236v1",
+      "pdfUrl": "https://arxiv.org/pdf/2606.06236v1",
+      "topicId": "medical-imaging",
+      "topicName": "AI 医学影像",
+      "topicColor": "#cf3f58",
+      "categories": [
+        "cs.LG"
+      ],
+      "score": 9
+    },
+    {
+      "id": "http://arxiv.org/abs/2606.06130v1",
+      "arxivId": "2606.06130v1",
+      "title": "Towards Realistic 3D Sonar Simulation",
+      "authors": [
+        "Youssef Attia",
+        "Davide Costa",
+        "Francesco Wanderlingh",
+        "Filippo Campagnaro",
+        "Enrico Simetti"
+      ],
+      "summary": "As underwater robotics research increasingly addresses complex 3D perception and autonomous navigation, the fidelity of sonar simulation has become a key factor in algorithm development. Current simulation frameworks typically rely on geometry-driven rendering, approximating 3D sonar as an underwater equivalent to LiDAR, which fails to account for fundamental acoustic phenomena such as refraction, multi-path interference, and phase-dependent signal formation. This paper proposes a modular architecture for realistic 3D sonar simulation that integrates GPU-accelerated graphics engines with physically grounded acoustic propagation principles. We implement a volumetric 3D sonar model within the NVIDIA Isaac Sim environment, modeled after the Water Linked 3D-15 sensor, and integrate it into a comprehensive underwater simulation framework. The system is validated through a hardware-in-the-loop configuration, where a modified FastLIO2 SLAM pipeline, executed on an NVIDIA Jetson Orin Nano, performs sensor fusion using synthetic 3D sonar, DVL, IMU, and pressure data. Finally, a qualitative comparison between simulated outputs and real-world data from harbor sheet-pile inspections is provided, characterizing the remaining sim-to-real gap and establishing a roadmap toward fully acoustics-driven volumetric sensing.",
+      "published": "2026-06-04T13:16:32Z",
+      "updated": "2026-06-04T13:16:32Z",
+      "abstractUrl": "http://arxiv.org/abs/2606.06130v1",
+      "pdfUrl": "https://arxiv.org/pdf/2606.06130v1",
+      "topicId": "3d-reconstruction",
+      "topicName": "3D 重建",
+      "topicColor": "#0f8b8d",
+      "categories": [
+        "cs.RO"
+      ],
+      "score": 9
+    },
+    {
+      "id": "http://arxiv.org/abs/2606.06039v1",
+      "arxivId": "2606.06039v1",
+      "title": "Texture-preserving implicit neural representation for Cone beam CT truncated reconstruction",
+      "authors": [
+        "Genyuan Zhang",
+        "Junyao Wang",
+        "Haoran Lan",
+        "Chuandong Tan",
+        "Songtao Zhu",
+        "Fenglin Liu"
+      ],
+      "summary": "Cone-beam computed tomography (CBCT) frequently suffers from data truncation, which introduces severe artifacts and limits the effective field of view (FOV). Existing deep learning methods for truncated cone-beam computed tomography (CBCT) reconstruction suffer from serious limitations, including a strict reliance on supervised ground truth and a failure to account for continuous 3D spatial truncation variations. To address these challenges, we introduce a self-supervised 3D reconstruction framework based on neural scene representations. By directly mapping spatial coordinates to radiodensity under projection supervision, our approach inherently bypasses traditional filtering and backprojection operations, thereby fundamentally eliminating truncation-induced ring artifacts while enabling robust continuous 3D data extrapolation. However, coordinate networks are susceptible to an inherent spectral bias, which leads to a severe loss of clinically vital high-frequency textures. To resolve this bottleneck, we further incorporate a physics-based iterative refinement module into the neural scene representation architecture. Leveraging the artifact-free, extrapolated volume from the coordinate network as an optimal initialization, this module progressively re-extracts and injects high-frequency structural information from the original projections back into the volume. Extensive experiments on both simulated and real-world datasets demonstrate that our method successfully unifies the exceptional artifact suppression and extrapolation capabilities of neural networks with the high-fidelity detail preservation of iterative algorithms.",
+      "published": "2026-06-04T11:33:21Z",
+      "updated": "2026-06-04T11:33:21Z",
+      "abstractUrl": "http://arxiv.org/abs/2606.06039v1",
+      "pdfUrl": "https://arxiv.org/pdf/2606.06039v1",
+      "topicId": "medical-imaging",
+      "topicName": "AI 医学影像",
+      "topicColor": "#cf3f58",
+      "categories": [
+        "cs.CV"
+      ],
+      "score": 9
+    },
+    {
+      "id": "http://arxiv.org/abs/2606.05998v1",
+      "arxivId": "2606.05998v1",
+      "title": "Deep Learning-based 3D Oral Cavity Reconstruction Using 2D Intraoral Images",
+      "authors": [
+        "Jihun Cho",
+        "Soo-Yeon Jeong",
+        "Eun-Jeong Bae",
+        "Sun-Young Ihm"
+      ],
+      "summary": "Oral 3D modelling is one of the most essential stages in dentistry, and many different approaches, such as impression taking and intraoral scanning, are commonly used for this phase, each with notable limitations. Impression taking, which involves placing alginate or silicone material in a tray and inserting it into the patient's oral cavity to form a negative mold, suffers from significant patient discomfort, material deformation errors, and difficulties in storage and transportation. Intraoral scanners, which directly scan oral structures in real time using structured light or laser technology, produce state-of-the-art results but are associated with substantially high equipment costs. To address these limitations, this paper proposes a software-based approach that reconstructs a 3D oral model using only ten 2D intraoral images captured from different angles, requiring no dedicated hardware devices. The proposed method reduces cost, eliminates the need for physical scanning equipment, minimises patient discomfort, and enables automated 3D reconstruction. The model is trained on the publicly available Dental3DS dataset, comprising 950 upper jaw samples, and employs MobileNetV2 as the image encoder combined with Multi-head Attention for multi-view feature fusion. The proposed model achieves an accuracy of 77.49%, measured by nearest-neighbor matching with a distance threshold of 0.035. However, predicted vertices tend to concentrate in high-density regions of the ground truth, resulting in uneven point distribution across the reconstructed model.",
+      "published": "2026-06-04T10:44:04Z",
+      "updated": "2026-06-04T10:44:04Z",
+      "abstractUrl": "http://arxiv.org/abs/2606.05998v1",
+      "pdfUrl": "https://arxiv.org/pdf/2606.05998v1",
+      "topicId": "3d-reconstruction",
+      "topicName": "3D 重建",
+      "topicColor": "#0f8b8d",
+      "categories": [
+        "cs.CV",
+        "cs.AI"
+      ],
+      "score": 9
+    },
+    {
+      "id": "http://arxiv.org/abs/2606.05896v1",
+      "arxivId": "2606.05896v1",
+      "title": "Resonant Minds: Closed-Loop Social Avatars with Theory of Mind",
+      "authors": [
+        "Jianxu Shangguan",
+        "Jing Xu",
+        "Hang Ye",
+        "Xiaoxuan Ma",
+        "Yizhou Wang",
+        "Wentao Zhu"
+      ],
+      "summary": "Creating lifelike digital humans with genuine social intelligence requires unifying cognitive reasoning and multimodal generation within a coherent framework. Current approaches treat these as separate tasks: Large Language Models excel at dialogue but lack embodied expression, while diffusion-based talking head models achieve visual fidelity but ignore social cognition. To bridge this gap, we propose a closed-loop dual-agent framework integrating perception, social reasoning, and expression into a continuous interaction cycle. The perception module analyzes partners' multimodal behaviors from video, while the social reasoning module infers hidden mental states through Theory of Mind and selects responses via an ensemble mechanism. The expression module then generates emotion-controllable dual-agent videos synthesizing both speaker speech and expression alongside listener reactive behaviors, capturing bidirectional dynamics absent in prior work. We construct a hierarchical Persona-Scenario dataset with psychologically grounded personas and private social goals to support evaluation under information asymmetry. Experiments on this dataset demonstrate competitive or superior performance on both dialogue quality and video generation metrics. Notably, our method surpasses even the full-information Script mode on key dialogue quality dimensions, suggesting that explicit mental state inference under uncertainty can elicit more thoughtful dialogue than unrestricted information access.",
+      "published": "2026-06-04T09:03:43Z",
+      "updated": "2026-06-04T09:03:43Z",
+      "abstractUrl": "http://arxiv.org/abs/2606.05896v1",
+      "pdfUrl": "https://arxiv.org/pdf/2606.05896v1",
+      "topicId": "world-models",
+      "topicName": "世界模型",
+      "topicColor": "#6a58c8",
+      "categories": [
+        "cs.CV"
+      ],
+      "score": 9
+    },
+    {
+      "id": "http://arxiv.org/abs/2606.05774v1",
+      "arxivId": "2606.05774v1",
+      "title": "LiAuto-GeoX: Efficient Grounded Driving Transformer",
+      "authors": [
+        "Jiawei Lian",
+        "Haoyi Sun",
+        "Yang Wu",
+        "Lifu Mu",
+        "Siyuan Wang",
+        "Le Hui",
+        "Ning Mao",
+        "Tao Wei",
+        "Pan Zhou",
+        "Kun Zhan",
+        "Jian Yang"
+      ],
+      "summary": "Dense 3D reconstruction has demonstrated immense potential for spatial understanding, yet its viability as a real-time, onboard representation for autonomous driving remains an open challenge. Existing large-scale visual geometry models typically require substantial computational resources and lack the long-range geometric fidelity, surround-view consistency, and real-time efficiency demanded by dynamic driving environments. To bridge this gap, we present \\textbf{LiAuto-GeoX}, an efficient grounded driving transformer designed for deployable, ego-centric 3D scene understanding. Our approach begins by learning a high-capacity driving geometry model from large-scale surround-view data, utilizing sparse LiDAR priors to provide robust geometric grounding in distant, ambiguous, or structure-sparse regions. We then instantiate this capability into a highly compact 155M-parameter onboard model through a novel geometry-preserving distillation framework. This framework employs mask-guided depth-aware distillation to retain fine-grained metric structures by emphasizing geometrically informative regions, and relative-pose relational distillation to enforce cross-view spatial consistency through pose-induced geometric relations. Extensive evaluations reveal that \\textbf{LiAuto-GeoX} runs at 220 FPS on KITTI while maintaining high-fidelity dense reconstruction, enabling real-time deployment. The learned geometry transfers seamlessly to downstream autonomy tasks, achieving 90.6 PDMS in trajectory prediction, 24.63 mIoU in occupancy prediction, and 47.67 IoU in future-frame prediction. These all demonstrate that efficient dense 3D reconstruction can transcend its traditional role as a perception target to serve as a scalable, foundational geometric representation for next-generation autonomous driving.",
+      "published": "2026-06-04T06:58:44Z",
+      "updated": "2026-06-04T06:58:44Z",
+      "abstractUrl": "http://arxiv.org/abs/2606.05774v1",
+      "pdfUrl": "https://arxiv.org/pdf/2606.05774v1",
+      "topicId": "3d-reconstruction",
+      "topicName": "3D 重建",
+      "topicColor": "#0f8b8d",
+      "categories": [
+        "cs.CV"
+      ],
+      "score": 9
+    },
+    {
+      "id": "http://arxiv.org/abs/2606.05665v1",
+      "arxivId": "2606.05665v1",
+      "title": "V2V-Bench: A Comprehensive Benchmark for Video-to-Video Generation Evaluation",
+      "authors": [
+        "Tao Liu",
+        "Leela Krishna",
+        "Gouti Pavan Kumar",
+        "Sreeja K",
+        "Vishav Garg"
+      ],
+      "summary": "Video-to-video (V2V) generation is difficult to evaluate because outputs must both follow editing instructions and preserve frame-level correspondence with the source video, which existing T2V and I2V metrics do not capture. We introduce V2V-Bench, a 11-dimension benchmark organized into five categories: temporal alignment, structural fidelity, transformation quality, video quality, and semantic alignment. V2V-Bench pairs diverse source videos with challenging editing tasks and evaluates two commercial models, Grok Imagine and Gemini Veo3, and one open-source model, Open Sora 2. Results show complementary model strengths: Grok performs better on editing fidelity, while Veo3 achieves stronger visual quality. On six V2V-specific dimensions, V2V-Bench reaches a Spearman correlation of 0.905 with human judgments.",
+      "published": "2026-06-04T03:48:42Z",
+      "updated": "2026-06-04T03:48:42Z",
+      "abstractUrl": "http://arxiv.org/abs/2606.05665v1",
+      "pdfUrl": "https://arxiv.org/pdf/2606.05665v1",
+      "topicId": "world-models",
+      "topicName": "世界模型",
+      "topicColor": "#6a58c8",
+      "categories": [
+        "cs.CV"
+      ],
+      "score": 9
+    },
+    {
+      "id": "http://arxiv.org/abs/2606.05650v1",
+      "arxivId": "2606.05650v1",
+      "title": "GS-NFS: Bandwidth-adaptive Streaming of Dynamic Gaussian Splats and Point Clouds",
+      "authors": [
+        "Rajrup Ghosh",
+        "Haodong Wang",
+        "Haoran Hong",
+        "Eduardo Pavez",
+        "Amartya Chaudhuri",
+        "Weiwu Pang",
+        "Harsha V. Madhyastha",
+        "Antonio Ortega",
+        "Ramesh Govindan"
+      ],
+      "summary": "Dynamic 3D Gaussian Splatting (3DGS) holds great promise as a 3D video streaming technology since it can represent complex 3D scenes with high fidelity. In this approach, every frame in a 3D video represents the environment as a collection of Gaussians with position and other attributes such as scale, rotation, opacity, and color. Frames capture fine details, permit views from any arbitrary perspective, but are an order of magnitude, or more, larger than 2D video frames. A line of recent work has explored how to compress dynamic 3DGS frames, but these approaches are often slow, in part because their compression techniques are not amenable to efficient acceleration. GS-NFS accelerates dynamic 3DGS compression and decompression on a GPU, to the point where it can encode and decode at full frame rate. It achieves this by developing novel GPU-based parallelizations of existing algorithms for encoding both positions and attributes of Gaussians. As a result, it is 1-2 orders of magnitude faster than the state-of-the-art in encoding and decoding a frame, while offering competitive compression performance and rendering quality.",
+      "published": "2026-06-04T03:27:56Z",
+      "updated": "2026-06-04T03:27:56Z",
+      "abstractUrl": "http://arxiv.org/abs/2606.05650v1",
+      "pdfUrl": "https://arxiv.org/pdf/2606.05650v1",
+      "topicId": "3d-reconstruction",
+      "topicName": "3D 重建",
+      "topicColor": "#0f8b8d",
+      "categories": [
+        "cs.MM",
+        "cs.CV",
+        "cs.GR",
+        "cs.NI"
+      ],
+      "score": 9
+    },
+    {
+      "id": "http://arxiv.org/abs/2606.05536v1",
+      "arxivId": "2606.05536v1",
+      "title": "Dual Feature Decoupling for Fine-Grained OOD Detection",
+      "authors": [
+        "Xiaokun Li",
+        "Yaping Huang",
+        "Qingji Guan"
+      ],
+      "summary": "Out-of-distribution detection (OOD) is an indispensable technique when applying machine learning models to real-world scenarios. Most existing OOD detection methods have been developed under the idealized assumption of large inter-class distributional differences, while largely overlooking fine-grained tasks characterized by subtle variations, such as medical image classification and vehicle recognition. The high visual similarity among fine-grained subcategories, together with the interference of background factors, makes OOD detection extremely challenging. To tackle this problem, we propose a novel Dual Feature Decoupling Network (DFDNet), which addresses fine-grained OOD detection from the perspective of feature disentanglement. The proposed DFDNet comprises two key components: a spatial-frequency decoupling module and a reconstruction-guided decoupling module. The spatial-frequency decoupling module is designed to preserve content features that are discriminative for classification while suppressing task-irrelevant style information. On the other hand, the reconstruction-guided decoupling module introduces a novel pixel-level adversarial reconstruction task to further remove low-level, non-discriminative information and enhance category-specific high-level semantic representations. Extensive experiments demonstrate that our method achieves competitive performance improvements on multiple datasets.",
+      "published": "2026-06-04T00:38:21Z",
+      "updated": "2026-06-04T00:38:21Z",
+      "abstractUrl": "http://arxiv.org/abs/2606.05536v1",
+      "pdfUrl": "https://arxiv.org/pdf/2606.05536v1",
+      "topicId": "medical-imaging",
+      "topicName": "AI 医学影像",
+      "topicColor": "#cf3f58",
+      "categories": [
+        "cs.CV"
+      ],
+      "score": 9
+    },
+    {
+      "id": "http://arxiv.org/abs/2606.05535v1",
+      "arxivId": "2606.05535v1",
+      "title": "Noise-Aware Visual Representation Learning for Medical Visual Question Answering",
+      "authors": [
+        "I Putu Adi Pratama",
+        "Bahadorreza Ofoghi",
+        "Atul Sajjanhar",
+        "Shang Gao"
+      ],
+      "summary": "Medical visual question answering (Med-VQA) has strong potential for clinical decision support by enabling AI models to interpret medical images and answer clinically relevant queries. Recent approaches typically connect off-the-shelf vision encoders with large language models (LLMs) through lightweight mapping networks to reduce computational cost. However, these methods often overlook the importance of handling noise and small irrelevant changes in visual representations. To address these challenges, we propose a noise-aware Med-VQA framework that incorporates a denoising autoencoder before visual embeddings are mapped into the input space of an LLM. The denoising autoencoder is pretrained to reconstruct clean visual embeddings from corrupted inputs, encouraging the model to learn robust visual representations that are less sensitive to noise. The resulting embeddings are then projected into the language model embedding space using a multi-layer perceptron (MLP), forming visual prefix tokens that provide image information to the LLM. To enable efficient adaptation without full retraining, we employ parameter-efficient fine-tuning using low-rank adaptation (LoRA). The proposed method is evaluated on the SLAKE and PathVQA benchmarks. Experimental results show improved robustness to noisy input embeddings while maintaining competitive clean performance across multiple evaluation criteria. These findings suggest that learning more robust visual representations can enhance Med-VQA performance and robustness.",
+      "published": "2026-06-04T00:37:27Z",
+      "updated": "2026-06-04T00:37:27Z",
+      "abstractUrl": "http://arxiv.org/abs/2606.05535v1",
+      "pdfUrl": "https://arxiv.org/pdf/2606.05535v1",
+      "topicId": "medical-imaging",
+      "topicName": "AI 医学影像",
+      "topicColor": "#cf3f58",
+      "categories": [
+        "cs.CV",
+        "cs.AI"
+      ],
+      "score": 9
+    },
+    {
+      "id": "http://arxiv.org/abs/2606.05491v1",
+      "arxivId": "2606.05491v1",
+      "title": "Unpaired RGB-Thermal Gaussian-Splatting Using Visual Geometric Transformers",
+      "authors": [
+        "Jean Cordonnier",
+        "Chenghao Xu",
+        "Olga Fink",
+        "Malcolm Mielle"
+      ],
+      "summary": "Multi-modal novel view synthesis (NVS) combining RGB and thermal imagery enables precise 3D scene reconstruction with visual and thermal information. However, existing methods typically rely on precisely calibrated RGB-thermal image pairs or stereo setups, limiting scalability and practical deployment. To address this, we introduce a framework for unpaired RGB-thermal NVS that leverages VGGT, a 3D feed-forward transformer architecture, to independently estimate camera poses for each modality. The pose sets are then aligned using the Procrustes algorithm with a cross-modal feature matcher, enabling joint registration without paired calibration. Building on this alignment, we further propose a multi-modal 3D Gaussian Splatting approach that learns directly from unpaired RGB and thermal images. Experiments on diverse scenes demonstrate that our method achieves competitive performance in thermal view synthesis while maintaining RGB fidelity. Moreover, we show that existing reconstruction approaches can produce modality-specific reconstructions that lack cross-modal consistency. We thus introduce a benchmarking framework to rigorously evaluate both per-modality image synthesis and the multi-modal coherence of reconstructed scenes.",
+      "published": "2026-06-03T22:30:58Z",
+      "updated": "2026-06-03T22:30:58Z",
+      "abstractUrl": "http://arxiv.org/abs/2606.05491v1",
+      "pdfUrl": "https://arxiv.org/pdf/2606.05491v1",
+      "topicId": "3d-reconstruction",
+      "topicName": "3D 重建",
+      "topicColor": "#0f8b8d",
+      "categories": [
+        "cs.CV",
+        "cs.RO"
+      ],
+      "score": 9
+    },
+    {
+      "id": "http://arxiv.org/abs/2606.05124v1",
+      "arxivId": "2606.05124v1",
+      "title": "Geometry Gaussians: Decoupling Appearance and Geometry in Gaussian Splatting",
+      "authors": [
+        "Hongyu Zhou",
+        "Zorah Lähner"
+      ],
+      "summary": "After the success of 3D Gaussian Splatting (3DGS) for novel view synthesis, many works have explored how to also use it for geometric surface representation. However, extracting accurate geometric information directly from 3DGS remains challenging and can often reduce the appearance rendering quality. In this work, we show that 3DGS in its default form is inheritedly unsuited to represent texture and geometry at the same time, by training with complete ground-truth texture and geometry information. We also propose a simple solution by applying a single additional geometry opacity parameter to each splat, together with an optional transparency-curated optimization pipeline. Our experiments, both with ground-truth and vision foundation model geometric input, show that this change leads to improved rendering and geometry performance on a wide variety of dataset, and especially complex scenes with transparent objects benefit significantly from our method.",
+      "published": "2026-06-03T17:29:36Z",
+      "updated": "2026-06-03T17:29:36Z",
+      "abstractUrl": "http://arxiv.org/abs/2606.05124v1",
+      "pdfUrl": "https://arxiv.org/pdf/2606.05124v1",
+      "topicId": "3d-reconstruction",
+      "topicName": "3D 重建",
+      "topicColor": "#0f8b8d",
+      "categories": [
+        "cs.GR",
+        "cs.CV",
+        "cs.LG"
+      ],
+      "score": 8
+    },
+    {
+      "id": "http://arxiv.org/abs/2606.05035v1",
+      "arxivId": "2606.05035v1",
+      "title": "Anchor3R: Streaming 3D Reconstruction with Transient Anchors for Long-Horizon Visual Mapping",
+      "authors": [
+        "Peilin Tao",
+        "Chong Cheng",
+        "Yuansen Du",
+        "Caiwei Song",
+        "Zhengqing Chen",
+        "Xiaoyang Guo",
+        "Wei Yin",
+        "Weiqiang Ren",
+        "Qian Zhang",
+        "Hainan Cui",
+        "Shuhan Shen"
+      ],
+      "summary": "Long-horizon online visual mapping is a core capability for robot perception, requiring continuous camera-motion and scene-geometry estimation from visual streams under bounded memory and computation. Recent feed-forward 3D reconstruction models provide strong geometric priors, but their streaming variants often predict poses in a fixed coordinate system tied to the first frame or a persistent scene memory. This fixed-gauge design leads to train--test mismatch, attention bias toward early anchors, and accumulated drift on sequences much longer than those seen during training. We propose \\emph{Anchor3R}, a streaming 3D reconstruction framework that treats feed-forward reconstruction as current-centric local measurement prediction rather than persistent global-gauge regression. At each time step, Anchor3R predicts window-relative poses and a local pointmap in the current-frame coordinate system, turning streaming reconstruction into relative-pose measurement generation. These measurements support online pose updates, while loop-closure reinsertion and motion averaging align the trajectory and transform local pointmaps into a coherent global reconstruction. Experiments on indoor, outdoor, driving, and RGB-D benchmarks show that Anchor3R improves long-horizon pose accuracy and dense reconstruction quality over existing streaming baselines, while supporting bounded-memory online inference.",
+      "published": "2026-06-03T16:00:13Z",
+      "updated": "2026-06-03T16:00:13Z",
+      "abstractUrl": "http://arxiv.org/abs/2606.05035v1",
+      "pdfUrl": "https://arxiv.org/pdf/2606.05035v1",
+      "topicId": "3d-reconstruction",
+      "topicName": "3D 重建",
+      "topicColor": "#0f8b8d",
+      "categories": [
+        "cs.CV"
+      ],
+      "score": 8
+    },
+    {
+      "id": "http://arxiv.org/abs/2606.04922v1",
+      "arxivId": "2606.04922v1",
+      "title": "Geometry-Aware Distillation for Prompt Tuning Biomedical Vision-Language Models",
+      "authors": [
+        "Tran Dinh Tien",
+        "Zhiqiang Shen"
+      ],
+      "summary": "Current prompt-based and adapter-based tuning of vision-language models (VLMs) is attractive for medical imaging, where clinical data sensitivity favors frozen backbones and annotations are limited. However, these methods typically optimize only the ground-truth class, treating all other classes as equally incorrect, ignoring clinically meaningful class relations and yielding unstable decision boundaries in limited-supervision settings. We propose Omni-Geometry Knowledge Distillation (OGKD), a new framework that injects class-relation structure into the teacher to produce directional targets that preserve the ground truth while respecting inter-class geometry. Using these targets, we develop two distillation losses: Global Geometry-Aware Distillation (GAD) operates on the global image token, and Label-Guided Geometry Distillation (LGD) applies the same geometry to attentive patch tokens to improve fine-grained alignment. Across comprehensive experiments and analyses on 11 widely-used medical datasets for base-to-novel and few-shot evaluations, our OGKD achieves substantially better performance, consistently improving accuracy by an average absolute gain of 1.7%-2.8% over all prior state-of-the-art VLM adaptation counterparts. It also robustly generalizes to unseen classes and yields more reliable predictions than other approaches. Our code is available at https://github.com/tientrandinh/OGKD.",
+      "published": "2026-06-03T14:17:57Z",
+      "updated": "2026-06-03T14:17:57Z",
+      "abstractUrl": "http://arxiv.org/abs/2606.04922v1",
+      "pdfUrl": "https://arxiv.org/pdf/2606.04922v1",
+      "topicId": "medical-imaging",
+      "topicName": "AI 医学影像",
+      "topicColor": "#cf3f58",
+      "categories": [
+        "cs.CV",
+        "cs.AI",
+        "cs.LG"
+      ],
+      "score": 8
+    },
+    {
+      "id": "http://arxiv.org/abs/2606.04898v1",
+      "arxivId": "2606.04898v1",
+      "title": "CDPM-Align: Multi-Scale Guidance-Aligned Diffusion Pretraining for Robust Few-Shot Anatomical Landmark Detection",
+      "authors": [
+        "Roberto Di Via",
+        "Irina Voiculescu",
+        "Francesca Odone",
+        "Vito Paolo Pastore"
+      ],
+      "summary": "Anatomical landmark detection is a fundamental task in medical image analysis supporting a wide range of diagnostic and interventional workflows. Although recent methods have achieved sub-millimetric localisation, accuracy alone is not sufficient for clinical deployment, requiring reliability and robustness in prediction. Despite its clinical relevance, the impact of representation learning in this context is still underexplored. In this work, we introduce CDPM-align, a multi-scale guidance-aligned conditional diffusion pre-training for anatomical landmark detection. Our experimental setup focuses on a few images and a few annotation regimes. Specifically, we employ three popular heterogeneous small-scale benchmark datasets for representation learning via conditional generative pre-training. Furthermore, we consider low-annotation scenarios for the downstream task of landmark detection, with 10 and 25 annotated images, reflecting realistic trade-offs between clinical effort and resource constraints for annotations. Our results confirm that generative pre-training enables the model to learn a robust representation. This improves both accuracy and uncertainty on the downstream tasks, advancing towards safe and efficient clinical deployment.",
+      "published": "2026-06-03T13:59:42Z",
+      "updated": "2026-06-03T13:59:42Z",
+      "abstractUrl": "http://arxiv.org/abs/2606.04898v1",
+      "pdfUrl": "https://arxiv.org/pdf/2606.04898v1",
+      "topicId": "medical-imaging",
+      "topicName": "AI 医学影像",
+      "topicColor": "#cf3f58",
+      "categories": [
+        "cs.CV"
+      ],
+      "score": 8
+    },
+    {
+      "id": "http://arxiv.org/abs/2606.04853v1",
+      "arxivId": "2606.04853v1",
+      "title": "Teaching Robots to Say 'I Don't Know' : SENTINEL for Uncertainty-Aware SLAM",
+      "authors": [
+        "Abhishek S",
+        "Badrikanath Praharaj",
+        "Sreeram MV"
+      ],
+      "summary": "Low-cost 2D LiDARs lack the intensity channel that higher-end sensors use to diagnose measurement failures, yet they are widely used on educational and budget robotics platforms. We present SENTINEL, a training - free, label - free reliability estimation framework that gives range - only LiDAR an effective diagnostic signal. SENTINEL combines geometry-based scan statistics with cross - modal depth consistency between LiDAR and an RGB - D camera to compute a per - scan reliability score between 0 and 1. When the score falls below a threshold, corrupted scans are rejected and the robot falls back to calibrated wheel odometry, preventing silent SLAM corruption. We evaluate SENTINEL on a GEFIER R1 four - wheel skid-steer robot equipped with an RPLidar A2M12 and an Intel RealSense D435i in a 185 cm by 245 cm arena containing controlled transparent and reflective failure elements on a central obstacle. Spatial reliability maps across five surface conditions, including glass, mirror, shiny paper, and a mixed mirror and shiny-paper condition, show clear separation between clean and failure cases, allowing affected regions to be identified as reject or noise. Because these failure modes are absent in simulation, validation is performed entirely on real hardware.",
+      "published": "2026-06-03T13:22:05Z",
+      "updated": "2026-06-03T13:22:05Z",
+      "abstractUrl": "http://arxiv.org/abs/2606.04853v1",
+      "pdfUrl": "https://arxiv.org/pdf/2606.04853v1",
+      "topicId": "3d-reconstruction",
+      "topicName": "3D 重建",
+      "topicColor": "#0f8b8d",
+      "categories": [
+        "cs.RO"
+      ],
+      "score": 8
+    },
+    {
+      "id": "http://arxiv.org/abs/2606.04788v1",
+      "arxivId": "2606.04788v1",
+      "title": "Z-FLoc: Zero-Shot Floorplan Localization via Geometric Primitives",
+      "authors": [
+        "Ayumi Umemura",
+        "Toshinori Kuwahara",
+        "Marc Pollefeys",
+        "Daniel Barath"
+      ],
+      "summary": "Visual localization -- estimating a camera pose within a pre-existing map -- is a fundamental problem in computer vision. Floorplans are an attractive map representation: they are readily available for most buildings, compact, and inherently invariant to visual appearance changes. However, bridging the severe domain gap between camera observations and floorplan geometry remains challenging. Existing methods address this gap through data-driven learning, yet they require large-scale training data and environment-specific retraining, limiting their practical deployment. We propose a zero-shot floorplan localization method that generalizes to novel environments without any retraining. Our key insight is that dominant geometric primitives -- lines and circles -- are ubiquitous in human-made environments and provide appearance-invariant structural constraints. We extract these primitives from a bird's-eye-view (BEV) projection of monocular 3D reconstructions and match them to the floorplan via dedicated minimal solvers within a robust estimation framework. Experiments on both simulated and real-world datasets show that our approach outperforms state-of-the-art learning-based methods on unseen environments, while using a single fixed set of hyperparameters across all experiments. The source code will be made publicly available.",
+      "published": "2026-06-03T12:14:24Z",
+      "updated": "2026-06-03T12:14:24Z",
+      "abstractUrl": "http://arxiv.org/abs/2606.04788v1",
+      "pdfUrl": "https://arxiv.org/pdf/2606.04788v1",
+      "topicId": "3d-reconstruction",
+      "topicName": "3D 重建",
+      "topicColor": "#0f8b8d",
+      "categories": [
+        "cs.CV",
+        "cs.RO"
+      ],
+      "score": 8
+    },
+    {
+      "id": "http://arxiv.org/abs/2606.04767v1",
+      "arxivId": "2606.04767v1",
+      "title": "Measuring Model Robustness via Fisher Information: Spectral Bounds, Theoretical Guarantees, and Practical Algorithms",
+      "authors": [
+        "Chong Zhang",
+        "Xiang Li",
+        "Jia Wang",
+        "Qiufeng Wang",
+        "Xiaobo Jin"
+      ],
+      "summary": "The robustness of deep neural networks is crucial for safety-critical deployments, yet existing evaluation methods are often attack-dependent and lack interpretability. We propose a principled, attack-agnostic robustness metric based on the spectral norm of the Fisher Information Matrix (FIM), which quantifies the worst-case sensitivity of the model's output distribution to input perturbations. Theoretically, we establish that the FIM equals the variance of the input Jacobian and derive closed-form spectral bounds for common architectures, including VGG, ResNet, DenseNet, and Transformer, providing the first theoretical robustness ranking. To enable scalable evaluation, we develop efficient algorithms, including power iteration and Hutchinson-based estimation, that support both white-box and black-box settings. Extensive experiments across multiple datasets, including CIFAR, ImageNet, and medical images, and across multiple architectures show a strong correlation between our metric and adversarial vulnerability. Our framework serves as an interpretable diagnostic tool that complements attack-based evaluations, offering insights into architectural sensitivity and guiding the design of more robust models. Code is available at: https://github.com/franz-chang/SRP/.",
+      "published": "2026-06-03T11:50:38Z",
+      "updated": "2026-06-03T11:50:38Z",
+      "abstractUrl": "http://arxiv.org/abs/2606.04767v1",
+      "pdfUrl": "https://arxiv.org/pdf/2606.04767v1",
+      "topicId": "medical-imaging",
+      "topicName": "AI 医学影像",
+      "topicColor": "#cf3f58",
+      "categories": [
+        "cs.LG",
+        "cs.CV"
+      ],
+      "score": 8
+    },
+    {
+      "id": "http://arxiv.org/abs/2606.04722v1",
+      "arxivId": "2606.04722v1",
+      "title": "StrokeTimer: Robust Representation Learning for Ischemic Stroke Onset-Time Estimation from Non-contrast CT",
+      "authors": [
+        "Weiru Wang",
+        "Susanne G. H. Olthuis",
+        "Elizaveta Lavrova",
+        "Robert J. van Oostenbrugge",
+        "Charles B. L. M. Majoie",
+        "Wim H. van Zwam",
+        "Ruisheng Su"
+      ],
+      "summary": "Ischemic stroke is a major global disease. Treatment decisions are highly time-sensitive, as eligibility for reperfusion therapies relies on the interval between stroke onset and intervention. However, the true onset time is often uncertain in clinical practice, necessitating imaging-based assessment of tissue age as a surrogate marker. Early ischemic changes on routinely acquired non-contrast CT (NCCT) are often subtle, and real-world clinical datasets exhibit pronounced onset-time class imbalance and center-scanner-related heterogeneity. In this work, we propose StrokeTimer, a fully automated framework for onset-time estimation in acute ischemic stroke. StrokeTimer integrates self-supervised disentanglement learning with energy-guided contrastive learning to capture subtle ischemic patterns while addressing long-tailed data distributions under acquisition variability. Onset time is categorized into three clinically relevant windows: <4.5 h, 4.5-6 h, and >6 h. Experimental results on a large multi-center NCCT dataset from two national cohorts, MR CLEAN Registry and MR CLEAN LATE, show that StrokeTimer achieves a macro AUC of 0.69 and a macro F1-score of 0.57, improving the strongest baseline by nearly 50% (p < 0.005). In this realistic, challenging setting, representative baseline approaches exhibit near-chance macro performance. Model explanations further highlight subtle gray-white matter blurring and hypodense regions consistent with established radiological biomarkers. These findings demonstrate the potential of StrokeTimer to support treatment decision-making in acute ischemic stroke. Code is available at https://github.com/BrainVas/StrokeTimer.",
+      "published": "2026-06-03T11:01:22Z",
+      "updated": "2026-06-03T11:01:22Z",
+      "abstractUrl": "http://arxiv.org/abs/2606.04722v1",
+      "pdfUrl": "https://arxiv.org/pdf/2606.04722v1",
+      "topicId": "medical-imaging",
+      "topicName": "AI 医学影像",
+      "topicColor": "#cf3f58",
+      "categories": [
+        "cs.CV"
+      ],
+      "score": 8
+    },
+    {
+      "id": "http://arxiv.org/abs/2606.04618v1",
+      "arxivId": "2606.04618v1",
+      "title": "BPDA-GMM: Bayesian Probabilistic Data Association via Gaussian Mixture Models for Semantic SLAM",
+      "authors": [
+        "Thanh Nguyen Canh",
+        "Haolan Zhang",
+        "Xiem HoangVan",
+        "Antonio Sgorbissa",
+        "Nak Young Chong"
+      ],
+      "summary": "Probabilistic data association (PDA) improves semantic SLAM in perceptually aliased scenes, but existing methods often assume a fixed landmark set, recompute association weights as the map grows, or rely on hand-tuned null-hypothesis weights. To address these limitations, we propose \\textbf{BPDA-GMM}, an online Bayesian PDA framework for semantic SLAM with a growing object-level map. BPDA-GMM uses a Dirichlet-process prior to induce a Chinese Restaurant Process (CRP) association model, where accumulated evidence favors existing landmarks, and the concentration parameter assigns probability mass to new landmarks. For each semantic detection, plausible candidates are selected by a joint semantic-geometric gate, CRP-weighted association probabilities are computed, and object landmarks are updated as semantic Gaussians in closed form. The resulting landmark set forms a Gaussian mixture model, and its dominant component is passed to the back-end as a max-mixture semantic factor. When association weights are inconclusive, an ambiguity-triggered $α$-divergence tempering step improves discrimination. Finally, a decoupled back-end zeroes the pose Jacobian of semantic factors, allowing noisy detections to refine landmarks without directly perturbing the trajectory. Experiments in simulation and on a real indoor dataset demonstrate improved trajectory accuracy, semantic mapping quality, and robustness to perceptual aliasing and classifier errors over state-of-the-art baselines. Code and video are publicly available at https://github.com/thanhnguyencanh/BPDA-SLAM.",
+      "published": "2026-06-03T08:53:39Z",
+      "updated": "2026-06-03T08:53:39Z",
+      "abstractUrl": "http://arxiv.org/abs/2606.04618v1",
+      "pdfUrl": "https://arxiv.org/pdf/2606.04618v1",
+      "topicId": "3d-reconstruction",
+      "topicName": "3D 重建",
+      "topicColor": "#0f8b8d",
+      "categories": [
+        "cs.RO"
+      ],
+      "score": 8
+    },
+    {
+      "id": "http://arxiv.org/abs/2606.04158v1",
+      "arxivId": "2606.04158v1",
+      "title": "Multi-Agent Next-Best-View Optimization for Risk-Averse Planning",
+      "authors": [
+        "Amirhossein Mollaei Khass",
+        "Vivek Pandey",
+        "Guangyi Liu",
+        "Athanasios Cosse",
+        "Emrah Bayrak",
+        "Nader Motee"
+      ],
+      "summary": "Multi-agent Next-Best-View (NBV) selection for safe path planning in uncertain and unknown environments requires informative, safety-aware, and efficient coordination. Centralized approaches rely on sharing raw sensor data or significant communication overhead, resulting in limited scalability. We propose a distributed, risk-aware multi-agent NBV framework in which each robot maintains a private local 3D Gaussian Splatting map and the team jointly maximizes expected information gain (EIG) restricted to masked zones along planned trajectories. The resulting distributed objective is solved by Consensus ADMM (C-ADMM) over a communication graph, with each robot exchanging only candidate viewpoints, planned trajectory descriptors, and scalar EIG contributions. Collision risk along each trajectory is modeled via Average Value-at-Risk (AV@R) over the local 3DGS map and used both to shape the masking radius and to score planned paths. Experiments in Gibson environments at multiple team sizes show that the distributed formulation approaches the centralized baseline in mapping quality and trajectory safety while reducing communication by orders of magnitude.",
+      "published": "2026-06-02T19:23:23Z",
+      "updated": "2026-06-02T19:23:23Z",
+      "abstractUrl": "http://arxiv.org/abs/2606.04158v1",
+      "pdfUrl": "https://arxiv.org/pdf/2606.04158v1",
+      "topicId": "3d-reconstruction",
+      "topicName": "3D 重建",
+      "topicColor": "#0f8b8d",
+      "categories": [
+        "cs.RO"
+      ],
+      "score": 8
+    },
+    {
+      "id": "http://arxiv.org/abs/2606.03994v1",
+      "arxivId": "2606.03994v1",
+      "title": "SimuScene: Simulation-Ready Compositional 3D Scene Reconstruction from a Single Image",
+      "authors": [
+        "Inhee Lee",
+        "Sangwon Baik",
+        "Sungjoo Kim",
+        "Hyeonwoo Kim",
+        "Hyunsoo Cha",
+        "Hanbyul Joo"
+      ],
+      "summary": "Reconstructing interactive, simulation-ready 3D scenes from a single image is a critical bottleneck for robotic manipulation. While recent single-image lifters recover plausible per-object shapes, composing them yields scenes that collapse under physical simulation due to interpenetrating, hovering, or sinking objects. Existing physics-aware methods address this strictly as a post-hoc layout correction, leaving the underlying geometric errors unresolved. To address this, we introduce SimuScene, a compositional 3D reconstruction pipeline that puts physics in the loop of shape and layout estimation. Rather than using physics merely for layout cleanup, we utilize the physics engine as a diagnostic measurement tool during the generative process itself. By diagnostically simulating reconstructed objects under gravity, we convert penetration and support failures into quantitative correction signals that drive gravity-axis stretching and amodal shape resampling. This physics-informed feedback loop mitigates accumulated reconstruction errors and produces a stable, simulation-ready compositional 3D scene. Extensive experiments demonstrate state-of-the-art performance on physical stability and geometric alignment benchmarks. We further highlight SimuScene's utility by deploying reconstructed environments in humanoid control and robot-arm manipulation tasks.",
+      "published": "2026-06-02T17:59:59Z",
+      "updated": "2026-06-02T17:59:59Z",
+      "abstractUrl": "http://arxiv.org/abs/2606.03994v1",
+      "pdfUrl": "https://arxiv.org/pdf/2606.03994v1",
+      "topicId": "3d-reconstruction",
+      "topicName": "3D 重建",
+      "topicColor": "#0f8b8d",
+      "categories": [
+        "cs.CV",
+        "cs.RO"
+      ],
+      "score": 7
+    },
+    {
+      "id": "http://arxiv.org/abs/2606.03909v1",
+      "arxivId": "2606.03909v1",
+      "title": "SparseStreet: Sparse Gaussian Splatting for Real-Time Street Scene Simulation",
+      "authors": [
+        "Qingpo Wuwu",
+        "Xiaobao Wei",
+        "Peng Chen",
+        "Nan Huang",
+        "Zhongyu Zhao",
+        "Hao Wang",
+        "Ming Lu",
+        "Ningning Ma",
+        "Shanghang Zhang"
+      ],
+      "summary": "While 3D Gaussian Splatting has shown promising results in street scene reconstruction, existing methods require massive numbers of Gaussian primitives to capture fine details, leading to prohibitive storage costs and slow rendering speeds. We observe that dynamic objects (e.g., vehicles and pedestrians) demand high-fidelity representations to maintain temporal consistency, while static background regions often contain substantial redundancy. Motivated by this, we propose SparseStreet, a general compression framework specifically designed for street scenes. First, we introduce a node-based learnable pruning strategy that systematically removes low-contributing Gaussian primitives while preserving visually critical regions. Second, after the scene representation stabilizes, we apply background compression, further reducing redundancy in static regions. Our method effectively preserves the geometry and appearance of dynamic objects while significantly reducing the total number of Gaussian primitives. Extensive experiments on the Waymo and nuScenes demonstrate that SparseStreet achieves up to 80% compression ratio with minimal quality degradation, enabling resource-efficient, high-fidelity dynamic scene reconstruction. Project website: https://sparsestreet.github.io/.",
+      "published": "2026-06-02T17:06:14Z",
+      "updated": "2026-06-02T17:06:14Z",
+      "abstractUrl": "http://arxiv.org/abs/2606.03909v1",
+      "pdfUrl": "https://arxiv.org/pdf/2606.03909v1",
+      "topicId": "3d-reconstruction",
+      "topicName": "3D 重建",
+      "topicColor": "#0f8b8d",
+      "categories": [
+        "cs.CV"
+      ],
+      "score": 7
+    }
+  ],
+  "topics": [
+    {
+      "id": "medical-imaging",
+      "name": "AI 医学影像",
+      "shortName": "医学影像",
+      "color": "#cf3f58",
+      "query": "(all:\"medical imaging\" OR all:radiology OR all:\"medical image segmentation\" OR all:MRI OR all:CT OR all:\"computed tomography\") AND (cat:cs.CV OR cat:cs.LG OR cat:eess.IV)",
+      "focus": [
+        "segmentation",
+        "radiology",
+        "MRI",
+        "CT",
+        "foundation model"
+      ],
+      "webQuery": "\"medical imaging\" OR radiology OR \"medical image segmentation\" OR MRI OR \"computed tomography\""
+    },
+    {
+      "id": "3d-reconstruction",
+      "name": "3D 重建",
+      "shortName": "3D 重建",
+      "color": "#0f8b8d",
+      "query": "(all:\"3D reconstruction\" OR all:NeRF OR all:\"Gaussian Splatting\" OR all:SLAM OR all:\"mesh reconstruction\" OR all:\"multi-view stereo\") AND (cat:cs.CV OR cat:cs.GR OR cat:cs.RO)",
+      "focus": [
+        "3D reconstruction",
+        "NeRF",
+        "Gaussian Splatting",
+        "SLAM",
+        "mesh"
+      ],
+      "webQuery": "\"3D reconstruction\" OR NeRF OR \"Gaussian Splatting\" OR SLAM OR \"mesh reconstruction\""
+    },
+    {
+      "id": "world-models",
+      "name": "世界模型",
+      "shortName": "世界模型",
+      "color": "#6a58c8",
+      "query": "(all:\"world model\" OR all:\"world models\" OR all:\"video generation\" OR all:\"model-based reinforcement learning\" OR all:\"embodied AI\" OR all:\"simulation policy\") AND (cat:cs.AI OR cat:cs.LG OR cat:cs.CV OR cat:cs.RO)",
+      "focus": [
+        "world model",
+        "video generation",
+        "embodied AI",
+        "planning",
+        "RL"
+      ],
+      "webQuery": "\"world model\" OR \"world models\" OR \"video generation\" OR \"model-based reinforcement learning\" OR \"embodied AI\""
+    }
+  ],
+  "error": null,
+  "cached": false
+}
